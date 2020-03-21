@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] Transform targetTran;
-    Vector3 targetVec;
     
-    bool bPlayerArmy,attackRunning = false;
-    LayerMask friendlyMask, enemyMask;
-    public bool enabledUnit = true;
-    
-    int health, speed;
+    private Vector3 targetVec;
+    private bool bPlayerArmy,attackRunning = false;
+    private LayerMask friendlyMask, enemyMask;
+    public bool enabledUnit =false;
+    private int health, speed;
+    private int entityType;
 
-    void Start()
+  
+    public void setUnit(float targetX,bool isPlayer,int type)
     {
-        setType();
+        setType(isPlayer);
+        bPlayerArmy = isPlayer;
+        entityType = type;
         speed = 5;
         health = 100;
-        targetVec = new Vector3(targetTran.position.x, transform.position.y, transform.position.z);
+        targetVec = new Vector3(targetX, transform.position.y, transform.position.z);
+        enabledUnit = true;
     }
 
     // Update is called once per frame
@@ -95,20 +98,20 @@ public class Unit : MonoBehaviour
         }
     }
 
-    void setType()
+    void setType(bool isPlayer)
     {
-        if (transform.CompareTag(constants.playerTag))
+        if (isPlayer)
         {
             friendlyMask = LayerMask.GetMask(constants.playerMaskName);
             enemyMask = LayerMask.GetMask(constants.enemyMaskName);
-            bPlayerArmy = true;
-
+            gameObject.layer = LayerMask.NameToLayer(constants.playerMaskName);
+           
         }
-        else if (transform.CompareTag(constants.enemyTag))
+        else 
         {
             friendlyMask = LayerMask.GetMask(constants.enemyMaskName);
             enemyMask = LayerMask.GetMask(constants.playerMaskName);
-            bPlayerArmy = false;
+            gameObject.layer = LayerMask.NameToLayer(constants.enemyMaskName);
 
         }
     }
@@ -117,7 +120,7 @@ public class Unit : MonoBehaviour
         health -= damage;
         if (health < 1)
         {
-            Singleton.instance.removeUnit(bPlayerArmy);
+            Singleton.instance.removeUnit(bPlayerArmy,entityType);
             destroyUnit();
         }
     }

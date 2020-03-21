@@ -15,9 +15,9 @@ public class Singleton : MonoBehaviour
     {
         gamemanger.attackUnit(damage, isPlayers);
     }
-    public void removeUnit(bool isPlayers)
+    public void removeUnit(bool isPlayers,int iEntityType)
     {
-        gamemanger.removeUnit(isPlayers);
+        gamemanger.removeUnit(isPlayers,iEntityType);
     }
 
 }

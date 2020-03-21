@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoldGenerator : MonoBehaviour
 {
-    [SerializeField] UIManager uiManager;
+    [SerializeField] GameManager gameManager;
     int GOLD_VALUE = 10;
     void Start()
     {
@@ -21,7 +21,7 @@ public class GoldGenerator : MonoBehaviour
     IEnumerator goldGenCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        uiManager.increaseGoldValue(GOLD_VALUE);
+        gameManager.increasePlayerGold(GOLD_VALUE);
         StartCoroutine(goldGenCoroutine());
     }
 }

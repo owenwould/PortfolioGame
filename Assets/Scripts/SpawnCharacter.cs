@@ -5,15 +5,16 @@ using UnityEngine;
 public class SpawnCharacter : MonoBehaviour
 {
     [SerializeField] GameObject enemyObj;
-    [SerializeField] Transform leftSpawnPointTran, rightSpawnPointTran;
-    [SerializeField] UIManager uiManager;
-    Vector3 leftSpawnPostion, rightSpawnPosition;
+    [SerializeField] GameObject obj;
+    [SerializeField] Transform playerSpawnPointTran, enemySpawnPointTran;
+    [SerializeField] GameManager gameManager;
+    Vector3 playerSpawnPostion, enemySpawnPosition;
     List<int> playerEntityQueue, enemyEntityQueue;
     static bool bPlayerCoroutineRunning;
     void Start()
     {
-        leftSpawnPostion = leftSpawnPointTran.position;
-        rightSpawnPosition = rightSpawnPointTran.position;
+        playerSpawnPostion = playerSpawnPointTran.position;
+        enemySpawnPosition = enemySpawnPointTran.position;
         bPlayerCoroutineRunning = false;
         playerEntityQueue = new List<int>(10);
 
@@ -24,84 +25,120 @@ public class SpawnCharacter : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.A))
         {
-            spawnEntity(1);
+            checkSpawnEntity(1);
         }
         if (Input.GetKeyUp(KeyCode.B))
         {
-            spawnEntity(3);
+            //spawnEntity(3);
         }
         if (Input.GetKeyUp(KeyCode.C))
         {
-            cheat();
+           
         }
     }
-    void spawnEntity(int iEntityType)
+    void checkSpawnEntity(int iEntityType)
     {
-        if (UIManager.unitCount < 10)
+        int iUnitCount = gameManager.returnPlayerUnitCount();
+        if (iUnitCount < constants.MAX_UNIT_COUNT)
         {
-            if (UIManager.goldCount >= UIManager.LIGHT_UNIT_COST)
+            if (checkPlayerGold(iEntityType))
             {
                 playerEntityQueue.Add(iEntityType);
-                uiManager.increaseUnitCount();
-                uiManager.decreaseGoldValue(UIManager.LIGHT_UNIT_COST);
+                gameManager.IncreaseUnitCount();
                 if (!bPlayerCoroutineRunning)
                 {
                     bPlayerCoroutineRunning = true;
                     StartCoroutine(playerQueueCoroutine());
                 }
-              
             }
             else
             {
-                print("Not enough Gold");
+                //Can't Afford
             }
-            
-        } 
-        
+        }
+        else
+        {
+            //Can't spawn
+        }
+
     }
-    void cheat()
+
+
+    
+
+    void spawnPlayerEntity(int iEntityType)
     {
-        uiManager.increaseGoldValue(1000);
+        GameObject entity = Instantiate(obj, playerSpawnPostion, Quaternion.identity);
+        Unit unitScript = entity.AddComponent<Unit>();
+        unitScript.setUnit(enemySpawnPosition.x, true,iEntityType);
+        gameManager.addToPlayerArmy(unitScript);
     }
-
-
-    void x()
-    {
-        
-        GameObject obj = Instantiate(enemyObj, rightSpawnPosition, Quaternion.identity);
-    }
-
-
     IEnumerator playerQueueCoroutine()
     {
         float fWaitDuration =0;
         switch (playerEntityQueue[0])
         {
-            case 1:
-                print(1);
-                fWaitDuration = 1;
+            case constants.LIGHT_UNIT_TYPE:
+                fWaitDuration = constants.LIGHT_UNIT_WAIT;
                 break;
-            case 2:
-                fWaitDuration = 2;
+            case constants.RANGED_UNIT_TYPE:
+                fWaitDuration = constants.RANGE_UNIT_WAIT;
                 break;
-            case 3:
-                print(3);
-                fWaitDuration = 3;
+            case constants.MEDIUM_UNIT_TYPE:
+                fWaitDuration = constants.MEDIUM_UNIT_WAIT;
+                break;
+            case constants.HEAVY_UNIT_TYPE:
+                fWaitDuration = constants.HEAVY_UNIT_WAIT;
                 break;
         }
         yield return new WaitForSeconds(fWaitDuration);
 
+        spawnPlayerEntity(playerEntityQueue[0]);
         playerEntityQueue.RemoveAt(0);
-        x();
+        
 
         if (playerEntityQueue.Count > 0)
-        {
             StartCoroutine(playerQueueCoroutine());
-        }
-        else { bPlayerCoroutineRunning = false; }
+        else
+            bPlayerCoroutineRunning = false;
 
     }
 
+    bool checkPlayerGold(int iType)
+    {
+        int gold = gameManager.returnPlayerGold();
+        bool canAfford = false;
+        switch (iType)
+        {
+            case constants.LIGHT_UNIT_TYPE:
+                if (gold >= constants.LIGHT_UNIT_COST) { 
+                    gameManager.decreasePlayerGold(constants.LIGHT_UNIT_COST);
+                    canAfford = true;
+                }
+                break;
+            case constants.RANGED_UNIT_TYPE:
+                if (gold >= constants.RANGE_UNIT_COST) {
+                    gameManager.decreasePlayerGold(constants.RANGE_UNIT_COST);
+                    canAfford = true;
+                }
+                break;
+            case constants.MEDIUM_UNIT_TYPE:
+                if (gold >= constants.MEDIUM_UNIT_COST) {
+                    gameManager.decreasePlayerGold(constants.MEDIUM_UNIT_COST);
+                    canAfford = true;
+                }
+                break;
+            case constants.HEAVY_UNIT_TYPE:
+                if (gold >= constants.HEAVY_UNIT_COST) {
+                    gameManager.decreasePlayerGold(constants.HEAVY_UNIT_COST);
+                    canAfford = true;
+                }
+                break;
+        }
+        return canAfford;
+    }
+
+    
 
     
 }
