@@ -13,6 +13,7 @@ public class SpawnCharacter : MonoBehaviour
     static bool bPlayerCoroutineRunning;
     void Start()
     {
+        
         playerSpawnPostion = playerSpawnPointTran.position;
         enemySpawnPosition = enemySpawnPointTran.position;
         bPlayerCoroutineRunning = false;
@@ -41,10 +42,12 @@ public class SpawnCharacter : MonoBehaviour
         int iUnitCount = gameManager.returnPlayerUnitCount();
         if (iUnitCount < constants.MAX_UNIT_COUNT)
         {
+            
             if (checkPlayerGold(iEntityType))
             {
-                playerEntityQueue.Add(iEntityType);
                 gameManager.IncreaseUnitCount();
+                
+                playerEntityQueue.Add(iEntityType);
                 if (!bPlayerCoroutineRunning)
                 {
                     bPlayerCoroutineRunning = true;
@@ -53,12 +56,12 @@ public class SpawnCharacter : MonoBehaviour
             }
             else
             {
-                //Can't Afford
+                return;
             }
         }
         else
         {
-            //Can't spawn
+            return;
         }
 
     }

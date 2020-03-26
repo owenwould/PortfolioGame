@@ -64,11 +64,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Base.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\constants.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GoldGenerator.cs" />
-    <Compile Include="Assets\Scripts\Raycast.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnCharacter.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />

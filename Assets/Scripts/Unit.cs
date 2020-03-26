@@ -8,9 +8,11 @@ public class Unit : MonoBehaviour
     private Vector3 targetVec;
     private bool bPlayerArmy,attackRunning = false;
     private LayerMask friendlyMask, enemyMask;
-    public bool enabledUnit =false;
+    public bool enabledUnit = false; 
+    private bool isAttacking = false;
     private int health, speed;
     private int entityType;
+    private Animator anim;
 
   
     public void setUnit(float targetX,bool isPlayer,int type)
@@ -22,6 +24,8 @@ public class Unit : MonoBehaviour
         health = 100;
         targetVec = new Vector3(targetX, transform.position.y, transform.position.z);
         enabledUnit = true;
+        anim = GetComponent<Animator>();
+        anim.SetBool(constants.isAttacking, false);
     }
 
     // Update is called once per frame
@@ -38,14 +42,22 @@ public class Unit : MonoBehaviour
     {
         if (detectEnemy())
         {
-
+            anim.SetBool(constants.isAttacking, true);
+           
         }
         else if (detectFriendly())
         {
 
+            anim.SetBool(constants.isRunning, false);
+
         }
         else
         {
+          
+            anim.SetBool(constants.isRunning, true);
+
+
+
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetVec, step);
         }
@@ -61,6 +73,7 @@ public class Unit : MonoBehaviour
         Ray ray = new Ray(origin, dir);
         if (Physics.Raycast(ray, out RaycastHit hit, 1, enemyMask))
         {
+            isAttacking = true;
             if (hit.collider.CompareTag(constants.baseTag))
             {
                 return true;
@@ -77,6 +90,9 @@ public class Unit : MonoBehaviour
         }
         else
         {
+            if (isAttacking)
+                anim.SetBool(constants.isAttacking, false);
+            isAttacking = false;
             return false;
         }
     }

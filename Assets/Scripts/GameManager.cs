@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     public int returnPlayerUnitCount()
     {
-        return playerArmy.Count;
+        return unitCount;
     }
     public int returnEnemyUnitCount()
     {
