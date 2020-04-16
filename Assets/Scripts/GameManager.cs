@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
             unitCountEnemy--;
             enemyArmy.RemoveAt(0);
             int reward = enemyDeathReward(iEntityType);
+           
             increaseGold(reward,true);
         }
             

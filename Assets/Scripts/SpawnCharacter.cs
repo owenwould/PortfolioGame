@@ -8,6 +8,7 @@ public class SpawnCharacter : MonoBehaviour
     [SerializeField] GameObject obj;
     [SerializeField] Transform playerSpawnPointTran, enemySpawnPointTran;
     [SerializeField] GameManager gameManager;
+    [SerializeField] PlayerStats playerUnitStats; 
     Vector3 playerSpawnPostion, enemySpawnPosition;
     List<int> playerEntityQueue, enemyEntityQueue;
     static bool bPlayerCoroutineRunning,bEnemyCorountineRunning;
@@ -28,7 +29,7 @@ public class SpawnCharacter : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.A))
         {
-            checkSpawnEntity(1,true);
+            checkSpawnEntity(constants.LIGHT_UNIT_TYPE,true);
         }
         if (Input.GetKeyUp(KeyCode.B))
         {
@@ -72,7 +73,6 @@ public class SpawnCharacter : MonoBehaviour
                         StartCoroutine(EnemyQueueCoroutine());
                     }
                 }
-               
             }
             else
             {
@@ -106,6 +106,9 @@ public class SpawnCharacter : MonoBehaviour
         GameObject entity = Instantiate(obj, vec, Quaternion.identity);
         Unit unitScript = entity.AddComponent<Unit>();
         unitScript.setUnit(targetPos, isPlayer,iEntityType);
+
+        UnitTypeStats unitStats = playerUnitStats.unitValues(iEntityType,isPlayer);
+        unitScript.setUnitAttributes(unitStats.Health, unitStats.Damge, unitStats.DamageDelay, unitStats.Range, unitStats.Speed);
         gameManager.addToPlayerArmy(unitScript,isPlayer);
     }
     IEnumerator PlayerQueueCoroutine()
