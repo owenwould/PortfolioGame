@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Base.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\constants.cs" />
+    <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GoldGenerator.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />

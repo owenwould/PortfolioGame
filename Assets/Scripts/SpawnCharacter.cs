@@ -10,14 +10,16 @@ public class SpawnCharacter : MonoBehaviour
     [SerializeField] GameManager gameManager;
     Vector3 playerSpawnPostion, enemySpawnPosition;
     List<int> playerEntityQueue, enemyEntityQueue;
-    static bool bPlayerCoroutineRunning;
+    static bool bPlayerCoroutineRunning,bEnemyCorountineRunning;
     void Start()
     {
         
         playerSpawnPostion = playerSpawnPointTran.position;
         enemySpawnPosition = enemySpawnPointTran.position;
         bPlayerCoroutineRunning = false;
-        playerEntityQueue = new List<int>(10);
+        bEnemyCorountineRunning = false;
+        playerEntityQueue = new List<int>(constants.MAX_UNIT_COUNT);
+        enemyEntityQueue = new List<int>(constants.MAX_UNIT_COUNT);
 
     }
 
@@ -26,33 +28,51 @@ public class SpawnCharacter : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.A))
         {
-            checkSpawnEntity(1);
+            checkSpawnEntity(1,true);
         }
         if (Input.GetKeyUp(KeyCode.B))
         {
-            //spawnEntity(3);
+            checkSpawnEntity(1, false);
         }
         if (Input.GetKeyUp(KeyCode.C))
         {
            
         }
     }
-    void checkSpawnEntity(int iEntityType)
+    void checkSpawnEntity(int iEntityType, bool isPlayer)
     {
-        int iUnitCount = gameManager.returnPlayerUnitCount();
+        int iUnitCount = 0;
+        if (isPlayer)
+            iUnitCount = gameManager.returnPlayerUnitCount();
+        else
+            iUnitCount = gameManager.returnEnemyUnitCount();
+
         if (iUnitCount < constants.MAX_UNIT_COUNT)
         {
             
-            if (checkPlayerGold(iEntityType))
+            if (checkPlayerGold(iEntityType,isPlayer))
             {
-                gameManager.IncreaseUnitCount();
-                
-                playerEntityQueue.Add(iEntityType);
-                if (!bPlayerCoroutineRunning)
+                gameManager.IncreaseUnitCount(isPlayer);
+
+                if (isPlayer)
                 {
-                    bPlayerCoroutineRunning = true;
-                    StartCoroutine(playerQueueCoroutine());
+                    playerEntityQueue.Add(iEntityType);
+                    if (!bPlayerCoroutineRunning)
+                    {
+                        bPlayerCoroutineRunning = true;
+                        StartCoroutine(PlayerQueueCoroutine());
+                    }
                 }
+                else
+                {
+                    enemyEntityQueue.Add(iEntityType);
+                    if (!bEnemyCorountineRunning)
+                    {
+                        bEnemyCorountineRunning = true;
+                        StartCoroutine(EnemyQueueCoroutine());
+                    }
+                }
+               
             }
             else
             {
@@ -69,17 +89,55 @@ public class SpawnCharacter : MonoBehaviour
 
     
 
-    void spawnPlayerEntity(int iEntityType)
+    void spawnPlayerEntity(int iEntityType,bool isPlayer)
     {
-        GameObject entity = Instantiate(obj, playerSpawnPostion, Quaternion.identity);
+        Vector3 vec;
+        float targetPos;
+        if (isPlayer)
+        {
+            vec = playerSpawnPostion;
+            targetPos = enemySpawnPosition.x;
+        }
+        else
+        {
+            vec = enemySpawnPosition;
+            targetPos = playerSpawnPostion.x;
+        }
+        GameObject entity = Instantiate(obj, vec, Quaternion.identity);
         Unit unitScript = entity.AddComponent<Unit>();
-        unitScript.setUnit(enemySpawnPosition.x, true,iEntityType);
-        gameManager.addToPlayerArmy(unitScript);
+        unitScript.setUnit(targetPos, isPlayer,iEntityType);
+        gameManager.addToPlayerArmy(unitScript,isPlayer);
     }
-    IEnumerator playerQueueCoroutine()
+    IEnumerator PlayerQueueCoroutine()
     {
-        float fWaitDuration =0;
-        switch (playerEntityQueue[0])
+        float fWaitDuration = returnWaitTime(playerEntityQueue);
+        yield return new WaitForSeconds(fWaitDuration);
+        spawnPlayerEntity(playerEntityQueue[0],true);
+        playerEntityQueue.RemoveAt(0);
+      
+        if (playerEntityQueue.Count > 0)
+            StartCoroutine(PlayerQueueCoroutine());
+        else
+            bPlayerCoroutineRunning = false;
+
+    }
+    IEnumerator EnemyQueueCoroutine()
+    {
+        float fWaitDuration = returnWaitTime(enemyEntityQueue);
+        yield return new WaitForSeconds(fWaitDuration);
+        spawnPlayerEntity(enemyEntityQueue[0], false);
+        enemyEntityQueue.RemoveAt(0);
+
+        if (enemyEntityQueue.Count > 0)
+            StartCoroutine(EnemyQueueCoroutine());
+        else
+            bEnemyCorountineRunning = false;
+    }
+
+    float returnWaitTime(List<int> list)
+    {
+        float fWaitDuration = 0;
+        switch (list[0])
         {
             case constants.LIGHT_UNIT_TYPE:
                 fWaitDuration = constants.LIGHT_UNIT_WAIT;
@@ -94,46 +152,44 @@ public class SpawnCharacter : MonoBehaviour
                 fWaitDuration = constants.HEAVY_UNIT_WAIT;
                 break;
         }
-        yield return new WaitForSeconds(fWaitDuration);
 
-        spawnPlayerEntity(playerEntityQueue[0]);
-        playerEntityQueue.RemoveAt(0);
-        
-
-        if (playerEntityQueue.Count > 0)
-            StartCoroutine(playerQueueCoroutine());
-        else
-            bPlayerCoroutineRunning = false;
-
+        return fWaitDuration;
     }
 
-    bool checkPlayerGold(int iType)
+
+
+    bool checkPlayerGold(int iType, bool isPlayer)
     {
-        int gold = gameManager.returnPlayerGold();
+        int gold = 0;
+        if (isPlayer)
+            gold = gameManager.returnPlayerGold();
+        else
+            gold = gameManager.returnEnemyGold();
+
         bool canAfford = false;
         switch (iType)
         {
             case constants.LIGHT_UNIT_TYPE:
                 if (gold >= constants.LIGHT_UNIT_COST) { 
-                    gameManager.decreasePlayerGold(constants.LIGHT_UNIT_COST);
+                    gameManager.decreaseGold(constants.LIGHT_UNIT_COST,isPlayer);
                     canAfford = true;
                 }
                 break;
             case constants.RANGED_UNIT_TYPE:
                 if (gold >= constants.RANGE_UNIT_COST) {
-                    gameManager.decreasePlayerGold(constants.RANGE_UNIT_COST);
+                    gameManager.decreaseGold(constants.RANGE_UNIT_COST,isPlayer);
                     canAfford = true;
                 }
                 break;
             case constants.MEDIUM_UNIT_TYPE:
                 if (gold >= constants.MEDIUM_UNIT_COST) {
-                    gameManager.decreasePlayerGold(constants.MEDIUM_UNIT_COST);
+                    gameManager.decreaseGold(constants.MEDIUM_UNIT_COST,isPlayer);
                     canAfford = true;
                 }
                 break;
             case constants.HEAVY_UNIT_TYPE:
                 if (gold >= constants.HEAVY_UNIT_COST) {
-                    gameManager.decreasePlayerGold(constants.HEAVY_UNIT_COST);
+                    gameManager.decreaseGold(constants.HEAVY_UNIT_COST,isPlayer);
                     canAfford = true;
                 }
                 break;
