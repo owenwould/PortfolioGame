@@ -8,13 +8,22 @@ public class GoldGenerator : MonoBehaviour
     int GOLD_VALUE = 10;
     void Start()
     {
-        StartCoroutine(goldGenCoroutine());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void startGoldGen()
+    {
+        StartCoroutine(goldGenCoroutine());
+    }
+    public void stopGoldGen()
+    {
+        StopAllCoroutines();
     }
 
 

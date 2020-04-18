@@ -14,6 +14,9 @@ public class constants : MonoBehaviour
     public const string isRunning = "isRunning", isAttacking = "isAttacking";
 
 
+    //
+    public const int startGoldPlayerEasy = 1200;
+
     //Unit stats - light
     public const int LIGHT_DEFUALT_HEALTH = 100,  LIGHT_DEFAULT_DAMAGE = 30;
     public const float LIGHT_DEFAULT_DAMAGERATE = 1f, LIGHT_DEFAULT_SPEED = 3f, LIGHT_DEFAULT_RANGE = 1f;

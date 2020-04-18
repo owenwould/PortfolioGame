@@ -6,7 +6,7 @@ public class Unit : MonoBehaviour
 {
     
     private Vector3 targetVec;
-    private bool bPlayerArmy,attackRunning = false;
+    private bool isPlayer,attackRunning = false;
     private LayerMask friendlyMask, enemyMask;
     public bool enabledUnit = false; 
     private bool isAttacking = false;
@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour
     public void setUnit(float targetX,bool isPlayer,int type)
     {
         setType(isPlayer);
-        bPlayerArmy = isPlayer;
+        this.isPlayer = isPlayer;
         entityType = type;
         targetVec = new Vector3(targetX, transform.position.y, transform.position.z);
         enabledUnit = true;
@@ -40,11 +40,11 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enabledUnit)
+        if (!GameManager.gameover)
         {
-            takeAction();
+            if (enabledUnit)
+                takeAction();
         }
-        
     }
 
     void takeAction()
@@ -86,17 +86,14 @@ public class Unit : MonoBehaviour
             isAttacking = true;
             if (hit.collider.CompareTag(constants.baseTag))
             {
+                if (!attackRunning)
+                    StartCoroutine(attackAction(isPlayer));
                 return true;
             }
             else
             {
-
                 if (!attackRunning)
-                {
                     StartCoroutine(attackAction());
-                }
-
-
                 return true;
             }
         }
@@ -153,7 +150,7 @@ public class Unit : MonoBehaviour
         health -= damage;
         if (health < 1)
         {
-            Singleton.instance.removeUnit(bPlayerArmy,entityType);
+            Singleton.instance.removeUnit(isPlayer,entityType);
             destroyUnit();
         }
     }
@@ -163,11 +160,26 @@ public class Unit : MonoBehaviour
     {
         attackRunning = true;
         yield return new WaitForSeconds(damageDelay);
-        Singleton.instance.attackUnit(returnDamage(), bPlayerArmy);
-        yield return new WaitForSeconds(0.1f);
+        if (health > 1)
+        {
+            Singleton.instance.attackUnit(returnDamage(), isPlayer);
+            yield return new WaitForSeconds(0.1f);
+        }
         //Give time to prevent an attack on dead enemy
         attackRunning = false;
     } 
+    private IEnumerator attackAction(bool isPlayer)
+    {
+        attackRunning = true;
+        yield return new WaitForSeconds(damageDelay);
+        if (health > 0)
+        {
+            Singleton.instance.attackBase(isPlayer, returnDamage());
+            yield return new WaitForSeconds(0.1f);
+        }
+        //Give time to prevent an attack on dead enemy
+        attackRunning = false;
+    }
 
     private int returnDamage()
     {
@@ -175,7 +187,6 @@ public class Unit : MonoBehaviour
         int min = (int)(damage - rng);
         int max = (int)(damage + rng);
         int generateDamage = Random.Range(min, max + 1);
-        print(generateDamage);
         return generateDamage;
     }
 

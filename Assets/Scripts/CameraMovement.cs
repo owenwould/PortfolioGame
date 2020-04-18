@@ -14,9 +14,10 @@ public class CameraMovement : MonoBehaviour
 
 
 
+   
+
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         cameraTran = GetComponent<Transform>();
         fLeftBoundary = leftCameraBoundaryTran.position.x;
         fRightBoundary = rightCameraBoundaryTran.position.x;
@@ -27,6 +28,11 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameManager.mainMenuMode || GameManager.gameover)
+            return;
+        
+
         if (cameraTran.position.x > fRightBoundary || cameraTran.position.x < fLeftBoundary)
         {
             resetVec.x = Mathf.Clamp(cameraTran.position.x, fLeftBoundary, fRightBoundary);

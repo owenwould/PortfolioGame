@@ -7,6 +7,10 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]  TextMeshProUGUI goldTextVal,unitTextVal;
     [SerializeField] GameManager gameManager;
+    [SerializeField] MainMenuMode mainMenuScript;
+    [SerializeField] SpawnCharacter spawnCharacterScript;
+    [SerializeField] TextMeshProUGUI gameoverText;
+    [SerializeField] GameObject gameoverUI;
  
     const string sUnitDefault = "/10";
     public const int LIGHT_UNIT_COST = 100;
@@ -16,14 +20,12 @@ public class UIManager : MonoBehaviour
         
         goldTextVal.SetText("0");
         unitTextVal.SetText("0");
-
+        mainMenuScript.setPlayingUI(false);
+        setCameraFocus(false);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void setUnitCount(int iSize)
     {
@@ -33,6 +35,41 @@ public class UIManager : MonoBehaviour
     {
         goldTextVal.SetText(value.ToString());
     }
-    
-  
+
+    public void beginGame(int playerGold)
+    {
+        mainMenuScript.setPlayingUI(true);
+        setCameraFocus(false);
+        setGoldValue(playerGold);
+        setUnitCount(0);
+    }
+    public void setCameraFocus(bool isLocked)
+    {
+        if (isLocked)
+            Cursor.lockState = CursorLockMode.Locked;
+        else
+            Cursor.lockState = CursorLockMode.None;
+    }
+    public void gameover(bool isPlayer)
+    {
+        spawnCharacterScript.GameOver();
+        gameoverUI.SetActive(true);
+        if (isPlayer)
+            gameoverText.SetText("Gameover \n\n Player Won");
+        else
+            gameoverText.SetText("Gameover \n\n Enemy Won");
+
+
+    }
+
+    public void displayMainMenu()
+    {
+
+        mainMenuScript.setPlayingUI(false);
+        gameoverUI.SetActive(false);
+    }
+
+
+
+
 }

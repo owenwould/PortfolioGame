@@ -4,29 +4,76 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]List<Unit> playerArmy;
-    [SerializeField]List<Unit> enemyArmy;
-    [SerializeField] UIManager uiManager;
+    List<Unit> playerArmy, enemyArmy;
+    List<GameObject> playerArmyObj, enemyArmyObj;
+    [SerializeField]UIManager uiManager;
+    [SerializeField] Base playerBase, enemyBase;
+    [SerializeField] GoldGenerator goldGenerator;
     private int playerGold, enemyGold,unitCountPlayer,unitCountEnemy;
+    public static bool gameover = false,mainMenuMode = true;
 
     void Start()
     {
         playerArmy = new List<Unit>(10);
         enemyArmy = new List<Unit>(10);
+        playerArmyObj = new List<GameObject>(10);
+        enemyArmyObj = new List<GameObject>(10);
+       
+    }
+
+    private void setInitialValues()
+    {
         playerGold = 0;
         enemyGold = 0;
         unitCountPlayer = 0;
         unitCountEnemy = 0;
     }
 
+    public void beginGame()
+    {
+        gameover = false;
+        clearArmies();
+        mainMenuMode = false;
+        setInitialValues();
+        uiManager.beginGame(playerGold);
+        goldGenerator.startGoldGen();
+        playerBase.startGame();
+        enemyBase.startGame();
+    } 
+    private void clearArmies()
+    {
+        playerArmy.Clear();
+        enemyArmy.Clear();
+
+        foreach (GameObject obj in playerArmyObj)
+        {
+            Destroy(obj);
+        }
+        foreach (GameObject obj in enemyArmyObj)
+        {
+            Destroy(obj);
+        }
+
+        playerArmyObj.Clear();
+        enemyArmyObj.Clear();
+
+    }
+
   
 
-    public void addToPlayerArmy(Unit unit, bool isPlayer)
+    public void addToPlayerArmy(Unit unit, bool isPlayer,GameObject obj)
     {
         if (isPlayer)
+        {
             playerArmy.Add(unit);
+            playerArmyObj.Add(obj);
+        }
         else
+        {
             enemyArmy.Add(unit);
+            enemyArmyObj.Add(obj);
+        }
+            
    }
    public void IncreaseUnitCount(bool isPlayer)
    {
@@ -51,6 +98,7 @@ public class GameManager : MonoBehaviour
             unitCountPlayer--;
             int reward = enemyDeathReward(iEntityType);
             playerArmy.RemoveAt(0);
+            playerArmyObj.RemoveAt(0);
             updateUnitCountUI(unitCountPlayer);
             increaseGold(reward, false);
             
@@ -60,6 +108,7 @@ public class GameManager : MonoBehaviour
         {
             unitCountEnemy--;
             enemyArmy.RemoveAt(0);
+            enemyArmyObj.RemoveAt(0);
             int reward = enemyDeathReward(iEntityType);
            
             increaseGold(reward,true);
@@ -150,6 +199,29 @@ public class GameManager : MonoBehaviour
         return reward;
 
     }
+
+    public void attackBase(bool isPlayer,int damage)
+    {
+        int baseHealth; 
+        if (isPlayer)
+           baseHealth = enemyBase.reduceHealth(damage);
+        else
+           baseHealth = playerBase.reduceHealth(damage);
+
+        if (baseHealth < 1)
+            gameoverState(isPlayer);
+           
+    }
+
+    private void gameoverState(bool isPlayer)
+    {
+        goldGenerator.stopGoldGen();
+        gameover = true;
+        uiManager.gameover(isPlayer);
+
+    }
+
+   
 
    
 

@@ -8,29 +8,30 @@ public class Base : MonoBehaviour
     int baseHealth;
     [SerializeField] Slider healthSlider;
     // Start is called before the first frame update
-    void Start()
+   
+    public void startGame()
     {
         baseHealth = 1000;
         healthSlider.maxValue = baseHealth;
         healthSlider.value = baseHealth;
-
     }
-
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
 
 
    
 
 
-    public void reduceHealth(int damage)
+    public int reduceHealth(int damage)
     {
         baseHealth -= damage;
         healthSlider.value = baseHealth;
+        return baseHealth;
         
     }
+
+
+
+
 }

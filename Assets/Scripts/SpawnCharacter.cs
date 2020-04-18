@@ -27,6 +27,7 @@ public class SpawnCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyUp(KeyCode.A))
         {
             checkSpawnEntity(constants.LIGHT_UNIT_TYPE,true);
@@ -40,6 +41,24 @@ public class SpawnCharacter : MonoBehaviour
            
         }
     }
+
+    public void spawnUnit(int unitType,bool isPlayer)
+    {
+        checkSpawnEntity(unitType, isPlayer);
+    }
+    public void GameOver()
+    {
+        if (GameManager.gameover)
+        {
+            StopAllCoroutines();
+            playerEntityQueue.Clear();
+            enemyEntityQueue.Clear();
+          
+        }
+      
+    }
+
+
     void checkSpawnEntity(int iEntityType, bool isPlayer)
     {
         int iUnitCount = 0;
@@ -86,6 +105,8 @@ public class SpawnCharacter : MonoBehaviour
 
     }
 
+    
+
 
     
 
@@ -109,10 +130,11 @@ public class SpawnCharacter : MonoBehaviour
 
         UnitTypeStats unitStats = playerUnitStats.unitValues(iEntityType,isPlayer);
         unitScript.setUnitAttributes(unitStats.Health, unitStats.Damge, unitStats.DamageDelay, unitStats.Range, unitStats.Speed);
-        gameManager.addToPlayerArmy(unitScript,isPlayer);
+        gameManager.addToPlayerArmy(unitScript,isPlayer,entity);
     }
     IEnumerator PlayerQueueCoroutine()
     {
+     
         float fWaitDuration = returnWaitTime(playerEntityQueue);
         yield return new WaitForSeconds(fWaitDuration);
         spawnPlayerEntity(playerEntityQueue[0],true);
@@ -199,6 +221,9 @@ public class SpawnCharacter : MonoBehaviour
         }
         return canAfford;
     }
+
+
+    
 
     
 

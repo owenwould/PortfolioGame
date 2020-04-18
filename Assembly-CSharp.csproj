@@ -63,14 +63,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Base.cs" />
+    <Compile Include="Assets\Scripts\ButtonScripts\ReturnToMainMenu.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\constants.cs" />
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GoldGenerator.cs" />
+    <Compile Include="Assets\Scripts\MainMenuMode.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\spawnButtons.cs" />
     <Compile Include="Assets\Scripts\SpawnCharacter.cs" />
+    <Compile Include="Assets\Scripts\StartGame.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\UnitTypeStats.cs" />

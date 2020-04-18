@@ -6,7 +6,7 @@ public class Singleton : MonoBehaviour
 {
     public static Singleton instance;
     [SerializeField] GameManager gamemanger;
-
+   
     private void Awake()
     {
         instance = this;
@@ -19,5 +19,11 @@ public class Singleton : MonoBehaviour
     {
         gamemanger.removeUnit(isPlayers,iEntityType);
     }
+    public void attackBase(bool isPlayer,int damage)
+    {
+        gamemanger.attackBase(isPlayer, damage);
+    }
+
+
 
 }
