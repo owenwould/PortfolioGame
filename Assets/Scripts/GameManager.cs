@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]UIManager uiManager;
     [SerializeField] Base playerBase, enemyBase;
     [SerializeField] GoldGenerator goldGenerator;
+    [SerializeField] EnemyManager enemyManager;
     private int playerGold, enemyGold,unitCountPlayer,unitCountEnemy;
     public static bool gameover = false,mainMenuMode = true;
 
@@ -23,8 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void setInitialValues()
     {
-        playerGold = 0;
-        enemyGold = 0;
+        playerGold = 1200;
+        enemyGold = 1200;
         unitCountPlayer = 0;
         unitCountEnemy = 0;
     }
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         goldGenerator.startGoldGen();
         playerBase.startGame();
         enemyBase.startGame();
+        enemyManager.begin();
     } 
     private void clearArmies()
     {
@@ -215,6 +217,7 @@ public class GameManager : MonoBehaviour
 
     private void gameoverState(bool isPlayer)
     {
+        enemyManager.StopAllCoroutines();
         goldGenerator.stopGoldGen();
         gameover = true;
         uiManager.gameover(isPlayer);
