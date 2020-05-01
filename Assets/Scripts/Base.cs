@@ -11,24 +11,23 @@ public class Base : MonoBehaviour
    
     public void startGame()
     {
-        baseHealth = 1000;
+        baseHealth = 100;
         healthSlider.maxValue = baseHealth;
         healthSlider.value = baseHealth;
     }
     // Update is called once per frame
     
-
-
-
-   
-
-
     public int reduceHealth(int damage)
     {
         baseHealth -= damage;
         healthSlider.value = baseHealth;
         return baseHealth;
         
+    }
+
+    public int getHealth()
+    {
+        return baseHealth;
     }
 
 

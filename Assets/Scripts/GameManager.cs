@@ -224,6 +224,16 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public float returnLinearPosition()
+    {
+        return enemyArmy[0].returnXPosition();
+    }
+
+    public bool returnIsAttacking()
+    {
+        return enemyArmy[0].returnIsAttacking();
+    }
+
    
 
    

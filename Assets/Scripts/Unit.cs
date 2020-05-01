@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
     private float damageDelay, range, speed;
     private int entityType;
     private Animator anim;
+    
    
 
   
@@ -183,7 +184,7 @@ public class Unit : MonoBehaviour
 
     private int returnDamage()
     {
-        float rng = damage/4;
+        float rng = damage/8;
         int min = (int)(damage - rng);
         int max = (int)(damage + rng);
         int generateDamage = Random.Range(min, max + 1);
@@ -197,5 +198,14 @@ public class Unit : MonoBehaviour
         StopAllCoroutines();
         attackRunning = false;
         Destroy(gameObject);
+    }
+
+    public float returnXPosition()
+    {
+        return transform.position.x;
+    }
+    public bool returnIsAttacking()
+    {
+        return isAttacking;
     }
 }

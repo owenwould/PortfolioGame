@@ -7,6 +7,9 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] GameManager manager;
     [SerializeField] SpawnCharacter spawner;
+    [SerializeField] Transform spawnTran;
+    [SerializeField] Base playerBaseScript;
+    float spawnXPos;
     int waitTime = 3;
     bool canSpawnAll;
     public bool enemyActive;
@@ -14,6 +17,7 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         canSpawnAll = false;
+        spawnXPos = spawnTran.position.x;
        
     }
 
@@ -49,32 +53,104 @@ public class EnemyManager : MonoBehaviour
         else
             return false;
     }
-    
+
 
 
     private void takeAction()
     {
-        print("X");
+
         int unitCount = returnUnitCount();
         int gold = returnGoldQuantity();
 
-        if (!canBuyUnit(unitCount,gold))
+        if (!canBuyUnit(unitCount, gold))
             return;
 
-
-       
-        if (unitCount < 2)
+        if (unitCount < 3)
             chooseUnit(gold);
         else
         {
-
+            makeEducatedDecision(gold);
         }
-        
-        /*
-         * else check if upgrade is worth saving for or buy more units based on position
-         * 
-         */
     }
+
+
+
+    void makeEducatedDecision(int gold)
+    {
+        int distanceAdditive = considerDistance();
+        int baseAdditive = considerPlayerHealth();
+        finalDecision(baseAdditive, distanceAdditive, gold);
+    }
+
+
+
+    private int considerDistance()
+    {
+        int distance = returnDistance(manager.returnLinearPosition());
+        bool isAttacking = returnIsAttacking();
+       
+        int action = 0;
+        if (isAttacking)
+        {
+            if (distance > 0 && distance < 20)
+                action = 40;
+            else if (distance > 20 && distance < 40)
+                action = 30;
+            else if (distance > 40 && distance < 60)
+                action = 20;
+            else if (distance > 60)
+                action = 30;
+        }
+        else
+        {
+            if (distance > 0 && distance < 20)
+                action = 10;
+            else if (distance > 20 && distance < 40)
+                action = 20;
+            else if (distance > 40 && distance < 60)
+                action = 20;
+            else if (distance > 60)
+                action = 40;
+        }
+        print("distance " + action);
+        return action;
+    }
+
+
+    private int considerPlayerHealth()
+    {
+        int playerHealth = returnPlayerBaseHealth();
+        print(playerHealth);
+        int action = 0;
+        if (playerHealth > 0 && playerHealth < 31)
+            action = 40;
+        else if (playerHealth > 30 && playerHealth < 51)
+            action = 20;
+        else if (playerHealth > 50 && playerHealth < 81)
+            action = 20;
+        else if (playerHealth > 80 && playerHealth < 101)
+           action =30;
+       
+        return action;
+    }
+    private void finalDecision(int healthAspect, int distanceAspect,int gold)
+    {
+        
+        int action = healthAspect + distanceAspect;
+
+        if (action > 0 && action < 51)
+        {
+            print("upgrades/wait");
+            return;
+        }
+        else if (action > 50 && action < 101)
+        {
+            print("Spawn");
+            chooseUnit(gold);
+        }
+      
+    }
+
 
     private void chooseUnit(int gold)
     {
@@ -86,15 +162,12 @@ public class EnemyManager : MonoBehaviour
 
 
         int unitType = returnUnitType(unitRange);
-
         spawner.spawnUnit(1, false);
-        
-
     }
 
     IEnumerator aiReponseDelay()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         takeAction();
         StartCoroutine(aiReponseDelay());
 
@@ -190,13 +263,23 @@ public class EnemyManager : MonoBehaviour
         return unitsAvailiableToSpawn;
     }
 
-
-
-
-
-
-
-
-
-
+    private int returnDistance(float unitXValue)
+    {
+        int distance = (int)(spawnXPos - unitXValue);
+        return distance;
+    }
+    private bool returnIsAttacking()
+    {
+        return manager.returnIsAttacking();
+    }
+    private int returnPlayerBaseHealth()
+    {
+        return playerBaseScript.getHealth();
+    }
 }
+
+
+
+
+
+

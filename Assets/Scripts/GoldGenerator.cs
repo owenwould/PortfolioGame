@@ -31,7 +31,7 @@ public class GoldGenerator : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         gameManager.increaseGold(GOLD_VALUE, true); //For Player
-        gameManager.increaseGold(GOLD_VALUE*2, false); //For Enemy
+        gameManager.increaseGold(GOLD_VALUE, false); //For Enemy
         StartCoroutine(goldGenCoroutine());
     }
 }
