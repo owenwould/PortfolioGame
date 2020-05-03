@@ -69,13 +69,13 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GoldGenerator.cs" />
     <Compile Include="Assets\Scripts\MainMenuMode.cs" />
-    <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\SpawnCharacter.cs" />
     <Compile Include="Assets\Scripts\StartGame.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\UnitTypeStats.cs" />
+    <Compile Include="Assets\Scripts\Upgrades.cs" />
     <Compile Include="Assets\Scripts\constants.cs" />
     <Compile Include="Assets\Scripts\spawnButtons.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

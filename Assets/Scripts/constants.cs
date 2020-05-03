@@ -20,12 +20,15 @@ public class constants : MonoBehaviour
     public const int startGoldPlayerEasy = 1200;
 
     //Unit stats - light
-    public const int LIGHT_DEFUALT_HEALTH = 100,  LIGHT_DEFAULT_DAMAGE = 30;
-    public const float LIGHT_DEFAULT_DAMAGERATE = 1f, LIGHT_DEFAULT_SPEED = 3f, LIGHT_DEFAULT_RANGE = 1f;
+    public const int LIGHT_HEALTH = 100,  LIGHT_DAMAGE = 30;
+    public const float LIGHT_DAMAGE_DELAY = 0.67f, LIGHT_SPEED = 4.28f, LIGHT_RANGE = 1f;
 
     //Unit stats - medium 
-    public const int MEDIUM_DEFUALT_HEALTH = 120, MEDIUM_DEFAULT_DAMAGE = 30;
-    public const float MEDIUM_DEFAULT_DAMAGERATE = 1f, MEDIUM_DEFAULT_SPEED = 2.5f, MEDIUM_DEFAULT_RANGE = 1f;
+    public const int MEDIUM_HEALTH = 120, MEDIUM_DEFAULT_DAMAGE = 30;
+    public const float MEDIUM_DAMAGE_RATE = 1f, MEDIUM_SPEED = 2.5f, MEDIUM_RANGE = 1f;
+
+    //Unit Stats - light
+    public const int RANGED_HEALTH = 75, RANGED_DAMAGE = 30;
 
 
 

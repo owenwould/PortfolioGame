@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Base playerBase, enemyBase;
     [SerializeField] GoldGenerator goldGenerator;
     [SerializeField] EnemyManager enemyManager;
+    [SerializeField] Upgrades upgradeScript;
     private int playerGold, enemyGold,unitCountPlayer,unitCountEnemy;
     public static bool gameover = false,mainMenuMode = true;
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         setInitialValues();
         uiManager.beginGame(playerGold);
         goldGenerator.startGoldGen();
+        upgradeScript.begin();
         playerBase.startGame();
         enemyBase.startGame();
         enemyManager.begin();

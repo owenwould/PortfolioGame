@@ -8,7 +8,7 @@ public class SpawnCharacter : MonoBehaviour
     [SerializeField] GameObject obj;
     [SerializeField] Transform playerSpawnPointTran, enemySpawnPointTran;
     [SerializeField] GameManager gameManager;
-    [SerializeField] PlayerStats playerUnitStats; 
+    [SerializeField] Upgrades upgradesScript; 
     Vector3 playerSpawnPostion, enemySpawnPosition;
     List<int> playerEntityQueue, enemyEntityQueue;
     static bool bPlayerCoroutineRunning,bEnemyCorountineRunning;
@@ -28,18 +28,20 @@ public class SpawnCharacter : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyUp(KeyCode.A))
-        {
+        if (Input.GetKeyUp(KeyCode.Alpha1))
             checkSpawnEntity(constants.LIGHT_UNIT_TYPE,true);
-        }
+        else if (Input.GetKeyUp(KeyCode.Alpha2))
+            checkSpawnEntity(constants.MEDIUM_UNIT_TYPE, true);
+        else if (Input.GetKeyUp(KeyCode.Alpha3))
+            checkSpawnEntity(constants.RANGED_UNIT_TYPE, true);
+        else if (Input.GetKeyUp(KeyCode.Alpha4))
+            checkSpawnEntity(constants.HEAVY_UNIT_TYPE, true);
+
         if (Input.GetKeyUp(KeyCode.B))
         {
-            checkSpawnEntity(1, false);
+            checkSpawnEntity(1,false);
         }
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-           
-        }
+
     }
 
     public void spawnUnit(int unitType,bool isPlayer)
@@ -53,7 +55,6 @@ public class SpawnCharacter : MonoBehaviour
             StopAllCoroutines();
             playerEntityQueue.Clear();
             enemyEntityQueue.Clear();
-          
         }
       
     }
@@ -128,7 +129,7 @@ public class SpawnCharacter : MonoBehaviour
         Unit unitScript = entity.AddComponent<Unit>();
         unitScript.setUnit(targetPos, isPlayer,iEntityType);
 
-        UnitTypeStats unitStats = playerUnitStats.unitValues(iEntityType,isPlayer);
+        UnitTypeStats unitStats = upgradesScript.unitValues(iEntityType,isPlayer);
         unitScript.setUnitAttributes(unitStats.Health, unitStats.Damge, unitStats.DamageDelay, unitStats.Range, unitStats.Speed);
         gameManager.addToPlayerArmy(unitScript,isPlayer,entity);
     }
