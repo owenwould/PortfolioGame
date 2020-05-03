@@ -120,27 +120,67 @@ public class GameManager : MonoBehaviour
             
     }
 
-    public void attackUnit(int damage, bool isPlayersUnit)
+    public void attackUnit(int damage, bool isPlayersUnit,int currentType)
     {
+        int fullDamage; 
+
         if (isPlayersUnit)
-            enemyArmy[0].takeDamage(damage);
+        {
+            fullDamage = damage + checkForCounter(currentType, enemyArmy[0].getUnitType());
+            enemyArmy[0].takeDamage(fullDamage);
+        }
         else
-            playerArmy[0].takeDamage(damage);
+        {
+            fullDamage = damage + checkForCounter(currentType, playerArmy[0].getUnitType());
+            playerArmy[0].takeDamage(fullDamage);
+        }
+           
     }
 
-    public int returnPlayerUnitCount()
+    private int checkForCounter(int damagingUnitType, int recievingUnitType) 
+    {
+        switch (damagingUnitType)
+        {
+            case constants.LIGHT_UNIT_TYPE:
+                if (recievingUnitType == constants.RANGED_UNIT_TYPE)
+                    return criticalHit();
+                break;
+            case constants.MEDIUM_UNIT_TYPE:
+                if (recievingUnitType == constants.HEAVY_UNIT_TYPE)
+                    return criticalHit();
+                break;
+            case constants.RANGED_UNIT_TYPE:
+                if (recievingUnitType == constants.MEDIUM_UNIT_TYPE)
+                    return criticalHit();
+                break;
+            case constants.HEAVY_UNIT_TYPE:
+                if (recievingUnitType == constants.LIGHT_UNIT_TYPE)
+                    return criticalHit();
+                break;
+        }
+        return 0;
+    }
+
+    private int criticalHit()
+    {
+        int AdditionalDamage = Random.Range(0, 11);
+        return AdditionalDamage;
+    }
+
+
+    public int getPlayerUnitCount()
     {
         return unitCountPlayer;
     }
-    public int returnEnemyUnitCount()
+    public int getEnemyUnitCount()
     {
         return unitCountEnemy;
     }
-    public int returnPlayerGold()
+    public int getPlayerGold()
     {
         return playerGold;
     }
-    public int returnEnemyGold()
+    public int getEnemyGold()
     {
         return enemyGold;
     }
@@ -228,12 +268,12 @@ public class GameManager : MonoBehaviour
 
     public float returnLinearPosition()
     {
-        return enemyArmy[0].returnXPosition();
+        return enemyArmy[0].getXPosition();
     }
 
     public bool returnIsAttacking()
     {
-        return enemyArmy[0].returnIsAttacking();
+        return enemyArmy[0].getIsAttacking();
     }
 
    

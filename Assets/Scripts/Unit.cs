@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour
     private LayerMask friendlyMask, enemyMask;
     public bool enabledUnit = false; 
     private bool isAttacking = false;
-    private int health,damage;
+    private int health,minDamage,maxDamage;
     private float damageDelay, range, speed;
     private int entityType;
     private Animator anim;
@@ -28,10 +28,11 @@ public class Unit : MonoBehaviour
        // anim = GetComponent<Animator>();
        // anim.SetBool(constants.isAttacking, false);
     }
-    public void setUnitAttributes(int health, int damage, float damageDelay, float range, float speed)
+    public void setUnitAttributes(int health, int minDamage,int maxDamage ,float damageDelay, float range, float speed)
     {
         this.health = health;
-        this.damage = damage;
+        this.minDamage = minDamage;
+        this.maxDamage = maxDamage;
         this.damageDelay = damageDelay;
         this.range = range;
         this.speed = speed;
@@ -163,7 +164,7 @@ public class Unit : MonoBehaviour
         yield return new WaitForSeconds(damageDelay);
         if (health > 1)
         {
-            Singleton.instance.attackUnit(returnDamage(), isPlayer);
+            Singleton.instance.attackUnit(returnDamage(), isPlayer,entityType);
             yield return new WaitForSeconds(0.1f);
         }
         //Give time to prevent an attack on dead enemy
@@ -184,13 +185,9 @@ public class Unit : MonoBehaviour
 
     private int returnDamage()
     {
-        float rng = damage/8;
-        int min = (int)(damage - rng);
-        int max = (int)(damage + rng);
-        int generateDamage = Random.Range(min, max + 1);
+        int generateDamage = Random.Range(minDamage, maxDamage + 1);
         return generateDamage;
     }
-
 
     public void destroyUnit()
     {
@@ -200,12 +197,16 @@ public class Unit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public float returnXPosition()
+    public float getXPosition()
     {
         return transform.position.x;
     }
-    public bool returnIsAttacking()
+    public bool getIsAttacking()
     {
         return isAttacking;
+    }
+    public int getUnitType()
+    {
+        return entityType;
     }
 }

@@ -38,11 +38,11 @@ public class EnemyManager : MonoBehaviour
 
     private int returnGoldQuantity()
     {
-        return manager.returnEnemyGold();
+        return manager.getEnemyGold();
     }
     private int returnUnitCount()
     {
-        return manager.returnEnemyUnitCount();
+        return manager.getEnemyUnitCount();
     }
 
     private bool canBuyUnit(int unitCount,int gold)

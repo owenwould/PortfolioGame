@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnCharacter : MonoBehaviour
 {
-    [SerializeField] GameObject enemyObj;
+    
     [SerializeField] GameObject obj;
     [SerializeField] Transform playerSpawnPointTran, enemySpawnPointTran;
     [SerializeField] GameManager gameManager;
@@ -64,9 +64,9 @@ public class SpawnCharacter : MonoBehaviour
     {
         int iUnitCount = 0;
         if (isPlayer)
-            iUnitCount = gameManager.returnPlayerUnitCount();
+            iUnitCount = gameManager.getPlayerUnitCount();
         else
-            iUnitCount = gameManager.returnEnemyUnitCount();
+            iUnitCount = gameManager.getEnemyUnitCount();
 
         if (iUnitCount < constants.MAX_UNIT_COUNT)
         {
@@ -130,7 +130,7 @@ public class SpawnCharacter : MonoBehaviour
         unitScript.setUnit(targetPos, isPlayer,iEntityType);
 
         UnitTypeStats unitStats = upgradesScript.unitValues(iEntityType,isPlayer);
-        unitScript.setUnitAttributes(unitStats.Health, unitStats.Damge, unitStats.DamageDelay, unitStats.Range, unitStats.Speed);
+        unitScript.setUnitAttributes(unitStats.getHealth(), unitStats.getMinDamage(),unitStats.getMaxDamage(), unitStats.getDamageDelay(), unitStats.getRange(), unitStats.getSpeed());
         gameManager.addToPlayerArmy(unitScript,isPlayer,entity);
     }
     IEnumerator PlayerQueueCoroutine()
@@ -188,9 +188,9 @@ public class SpawnCharacter : MonoBehaviour
     {
         int gold = 0;
         if (isPlayer)
-            gold = gameManager.returnPlayerGold();
+            gold = gameManager.getPlayerGold();
         else
-            gold = gameManager.returnEnemyGold();
+            gold = gameManager.getEnemyGold();
 
         bool canAfford = false;
         switch (iType)
