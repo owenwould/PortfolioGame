@@ -10,8 +10,10 @@ public class Unit : MonoBehaviour
     private LayerMask friendlyMask, enemyMask;
     public bool enabledUnit = false; 
     private bool isAttacking = false;
-    private int health,minDamage,maxDamage;
-    private float damageDelay, range, speed;
+    private int health,minDamage,maxDamage,range,speed;
+    private float damageDelay;
+   
+  
     private int entityType;
     private Animator anim;
     
@@ -25,10 +27,11 @@ public class Unit : MonoBehaviour
         entityType = type;
         targetVec = new Vector3(targetX, transform.position.y, transform.position.z);
         enabledUnit = true;
+
        // anim = GetComponent<Animator>();
        // anim.SetBool(constants.isAttacking, false);
     }
-    public void setUnitAttributes(int health, int minDamage,int maxDamage ,float damageDelay, float range, float speed)
+    public void setUnitAttributes(int health, int minDamage,int maxDamage ,float damageDelay, int range, int speed)
     {
         this.health = health;
         this.minDamage = minDamage;
@@ -36,6 +39,9 @@ public class Unit : MonoBehaviour
         this.damageDelay = damageDelay;
         this.range = range;
         this.speed = speed;
+
+
+        
     }
 
 
@@ -65,7 +71,7 @@ public class Unit : MonoBehaviour
         else
         {
             //anim.SetBool(constants.isRunning, true);
-            float step = speed * Time.deltaTime;
+            float step = (float) speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetVec, step);
         }
 

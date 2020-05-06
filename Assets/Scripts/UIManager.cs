@@ -5,12 +5,12 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField]  TextMeshProUGUI goldTextVal,unitTextVal;
+    [SerializeField] TextMeshProUGUI goldTextVal,unitTextVal;
     [SerializeField] GameManager gameManager;
     [SerializeField] MainMenuMode mainMenuScript;
     [SerializeField] SpawnCharacter spawnCharacterScript;
     [SerializeField] TextMeshProUGUI gameoverText;
-    [SerializeField] GameObject gameoverUI;
+    [SerializeField] GameObject gameoverUI,upgradesUI;
  
     const string sUnitDefault = "/10";
     public const int LIGHT_UNIT_COST = 100;
@@ -52,8 +52,10 @@ public class UIManager : MonoBehaviour
     }
     public void gameover(bool isPlayer)
     {
+        upgradesUI.SetActive(false);
         spawnCharacterScript.GameOver();
         gameoverUI.SetActive(true);
+
         if (isPlayer)
             gameoverText.SetText("Gameover \n\n Player Won");
         else

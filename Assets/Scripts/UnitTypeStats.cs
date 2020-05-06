@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UnitTypeStats
 {
-    private int health, minDamage, maxDamage;
-    private float damageDelay, range, speed;
+    private int health, minDamage, maxDamage, range, speed;
+    private float damageDelay;
 
     public UnitTypeStats()
     {
 
     }
 
-    public UnitTypeStats(int health, int minDamge, int maxDamage, float damageDelay, float range, float speed)
+    public UnitTypeStats(int health, int minDamge, int maxDamage, float damageDelay, int range, int speed)
     {
         this.health = health;
         this.minDamage = minDamge;
@@ -55,7 +55,7 @@ public class UnitTypeStats
     {
         this.damageDelay = damageDelay;
     }
-    public float getRange()
+    public int getRange()
     {
         return range;
     }
@@ -63,7 +63,7 @@ public class UnitTypeStats
     {
         this.range = range;
     }
-    public float getSpeed()
+    public int getSpeed()
     {
         return speed;
     }

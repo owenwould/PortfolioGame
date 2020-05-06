@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void setInitialValues()
     {
-        playerGold = 1200;
+        playerGold = constants.startGoldPlayerEasy;
         enemyGold = 1200;
         unitCountPlayer = 0;
         unitCountEnemy = 0;
