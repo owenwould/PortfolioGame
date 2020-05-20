@@ -47,6 +47,7 @@ public class constants : MonoBehaviour
     public const float HEAVY_DAMAGE_DELAY = 0.80f;
 
 
+    public const string HEALTH_UPGRADE_TEXT = "Upgrade Health", DAMAGE_UPGRADE_TEXT = "Upgrade Damage", SPEED_UPGRADE_TEXT = "Upgrade Speed", RANGE_UPGRADE_TEXT = "Upgrade Range",UPGRADE_COMPLETE = "Complete";
     //Upgrades 
     
     public static int returnUpgradeStage(int currentValue, int attributeType, int unitType)
@@ -210,6 +211,22 @@ public class constants : MonoBehaviour
         print("Error");
         return 1000;
 
+    }
+    public static string returnUpgradeText(int attributeType)
+    {
+        switch (attributeType)
+        {
+            case attribute_tpye_health:
+                return HEALTH_UPGRADE_TEXT;
+            case attribute_type_damage:
+                return DAMAGE_UPGRADE_TEXT;
+            case attribute_type_speed:
+                return SPEED_UPGRADE_TEXT;
+            case attribute_type_range:
+                return RANGE_UPGRADE_TEXT;
+        }
+        print("error");
+        return "";
     }
 
   

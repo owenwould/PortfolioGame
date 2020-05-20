@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] SpawnCharacter spawner;
     [SerializeField] Transform spawnTran;
     [SerializeField] Base playerBaseScript;
+    [SerializeField] Upgrades upgradeScript;
     float spawnXPos;
     int waitTime = 3;
     bool canSpawnAll;
@@ -140,7 +141,7 @@ public class EnemyManager : MonoBehaviour
 
         if (action > 0 && action < 51)
         {
-            print("upgrades/wait");
+          
             return;
         }
         else if (action > 50 && action < 101)
@@ -275,6 +276,14 @@ public class EnemyManager : MonoBehaviour
     private int returnPlayerBaseHealth()
     {
         return playerBaseScript.getHealth();
+    }
+
+
+
+
+    private void upgrade()
+    {
+
     }
 }
 

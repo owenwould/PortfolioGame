@@ -11,7 +11,7 @@ public class Base : MonoBehaviour
    
     public void startGame()
     {
-        baseHealth = 100;
+        baseHealth = 1000;
         healthSlider.maxValue = baseHealth;
         healthSlider.value = baseHealth;
     }

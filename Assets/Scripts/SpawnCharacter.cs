@@ -12,6 +12,7 @@ public class SpawnCharacter : MonoBehaviour
     Vector3 playerSpawnPostion, enemySpawnPosition;
     List<int> playerEntityQueue, enemyEntityQueue;
     static bool bPlayerCoroutineRunning,bEnemyCorountineRunning;
+    [SerializeField] UIManager uiManager;
     void Start()
     {
         
@@ -31,17 +32,11 @@ public class SpawnCharacter : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Alpha1))
             checkSpawnEntity(constants.LIGHT_UNIT_TYPE,true);
         else if (Input.GetKeyUp(KeyCode.Alpha2))
-            checkSpawnEntity(constants.MEDIUM_UNIT_TYPE, true);
-        else if (Input.GetKeyUp(KeyCode.Alpha3))
             checkSpawnEntity(constants.RANGED_UNIT_TYPE, true);
+        else if (Input.GetKeyUp(KeyCode.Alpha3))
+            checkSpawnEntity(constants.MEDIUM_UNIT_TYPE, true);
         else if (Input.GetKeyUp(KeyCode.Alpha4))
             checkSpawnEntity(constants.HEAVY_UNIT_TYPE, true);
-
-        if (Input.GetKeyUp(KeyCode.B))
-        {
-            checkSpawnEntity(1,false);
-        }
-
     }
 
     public void spawnUnit(int unitType,bool isPlayer)
@@ -77,6 +72,7 @@ public class SpawnCharacter : MonoBehaviour
 
                 if (isPlayer)
                 {
+                    uiManager.setTimer(iEntityType);
                     playerEntityQueue.Add(iEntityType);
                     if (!bPlayerCoroutineRunning)
                     {
@@ -135,7 +131,8 @@ public class SpawnCharacter : MonoBehaviour
     }
     IEnumerator PlayerQueueCoroutine()
     {
-     
+
+       
         float fWaitDuration = returnWaitTime(playerEntityQueue);
         yield return new WaitForSeconds(fWaitDuration);
         spawnPlayerEntity(playerEntityQueue[0],true);

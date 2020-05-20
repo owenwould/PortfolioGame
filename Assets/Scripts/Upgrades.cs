@@ -6,15 +6,12 @@ public class Upgrades : MonoBehaviour
 {
     private Dictionary<int,UnitTypeStats> playerUnitStats;
     private Dictionary<int, UnitTypeStats> enemyUnitStats;
-
-    private Dictionary<int, UnitAttributes> unitAttributes;
     [SerializeField] GameManager managerScript;
     
     public void begin()
     {
         playerUnitStats = new Dictionary<int, UnitTypeStats>();
         enemyUnitStats = new Dictionary<int, UnitTypeStats>();
-        unitAttributes = new Dictionary<int, UnitAttributes>();
         setUnitStats();
     }
 
@@ -81,37 +78,41 @@ public class Upgrades : MonoBehaviour
 
 
 
-
+    public int returnCurrentProgress(int unitType,int attributeType)
+    {
+        int currentValue = returnCurrentAttributeValue(true, unitType, attributeType);
+        int stage = constants.returnUpgradeStage(currentValue, attributeType, unitType);
+        return stage;
+    }
 
 
   
-    public void upgradeAttribute(bool isPlayer, int unitType, int attributeType)
+    public bool upgradeAttribute(bool isPlayer, int unitType, int attributeType)
     {
         int currentValue = returnCurrentAttributeValue(isPlayer, unitType, attributeType);
         int currentStage = constants.returnUpgradeStage(currentValue, attributeType, unitType);
-        print(currentStage);
+      
 
-
-        
         switch (currentStage)
         {
             case constants.initialStage:
-                upgrade(constants.firstUpgradeCost, isPlayer, attributeType, unitType,currentStage);
-                break;
+               return upgrade(constants.firstUpgradeCost, isPlayer, attributeType, unitType,currentStage);
+               
             case constants.stage_one:
-                upgrade(constants.secondUpgradeCost, isPlayer, attributeType, unitType,currentStage);
-                break;
+                return upgrade(constants.secondUpgradeCost, isPlayer, attributeType, unitType,currentStage);
+             
             case constants.stage_two:
-                upgrade(constants.finalUpgradeCost, isPlayer, attributeType, unitType,currentStage);
-                break;
+                return upgrade(constants.finalUpgradeCost, isPlayer, attributeType, unitType,currentStage);
+               
             case constants.stage_final:
-                return;      
+                return false;      
         }
+        return false;
     }
 
 
 
-    private void upgrade(int cost, bool isPlayer,int attributeType, int unitType,int currentStage)
+    private  bool upgrade(int cost, bool isPlayer,int attributeType, int unitType,int currentStage)
     {
         int currentGold;
         if (isPlayer)
@@ -123,7 +124,7 @@ public class Upgrades : MonoBehaviour
         int newValue = constants.returnNewValue(initialAttributeVal, currentStage);
 
         if (currentGold < cost)
-            return;
+            return false;
         else
         {
            
@@ -137,6 +138,7 @@ public class Upgrades : MonoBehaviour
                 upgradeStat(enemyUnitStats, attributeType, unitType, newValue,currentStage);
                 managerScript.decreaseGold(cost, false);
             }
+            return true;
         } 
     }
 
@@ -209,6 +211,18 @@ public class Upgrades : MonoBehaviour
             print("Error");
         }
         return 0;
+    }
+
+
+    public void enemyUpgrade(int gold)
+    {
+        //Check if any unit can be upgraded 
+
+
+
+
+
+
     }
 
 
