@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: 28dbb130e2a87d747848c0cbabf9cf37
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1276448946918671102
+    second: MediumAttack_0
+  - first:
+      213: -4989062867074666397
+    second: MediumAttack_1
+  - first:
+      213: -3765110601713238713
+    second: MediumAttack_2
+  - first:
+      213: 7775998237012757271
+    second: MediumAttack_3
+  - first:
+      213: 6864332452262800354
+    second: MediumAttack_4
+  - first:
+      213: 6950052372732692922
+    second: MediumAttack_5
+  - first:
+      213: 6829655096609636697
+    second: MediumAttack_6
+  - first:
+      213: -7883483841901356695
+    second: MediumAttack_7
+  - first:
+      213: -7083670368945611958
+    second: MediumAttack_8
+  - first:
+      213: 3133231758373551144
+    second: MediumAttack_9
+  - first:
+      213: -6312889470410978869
+    second: MediumAttack_10
+  - first:
+      213: -3033246448950214302
+    second: MediumAttack_11
+  - first:
+      213: 3807474151758306531
+    second: MediumAttack_12
+  - first:
+      213: 3476185730355707632
+    second: MediumAttack_13
+  - first:
+      213: 838841527501854180
+    second: MediumAttack_14
+  - first:
+      213: -442529830440691125
+    second: MediumAttack_15
+  - first:
+      213: 1383164240141427112
+    second: MediumAttack_16
+  - first:
+      213: -4911418234953444519
+    second: MediumAttack_17
+  - first:
+      213: -3979912129279413568
+    second: MediumAttack_18
+  - first:
+      213: 2991039673795050422
+    second: MediumAttack_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MediumAttack_0
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 2573
+        width: 274
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef24207ed8bd6b110800000000000000
+      internalID: 1276448946918671102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_1
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 2560
+        width: 255
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3603ced61c943cab0800000000000000
+      internalID: -4989062867074666397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_2
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 2560
+        width: 234
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d33dc2bd3afbbc0800000000000000
+      internalID: -3765110601713238713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_3
+      rect:
+        serializedVersion: 2
+        x: 1907
+        y: 2574
+        width: 241
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b85339235e9eb60800000000000000
+      internalID: 7775998237012757271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_4
+      rect:
+        serializedVersion: 2
+        x: 2450
+        y: 2561
+        width: 259
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eb6f4d1ff1034f50800000000000000
+      internalID: 6864332452262800354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 2068
+        width: 272
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9c71f5fcb837060800000000000000
+      internalID: 6950052372732692922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_6
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 2066
+        width: 283
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9518ad3102fc7ce50800000000000000
+      internalID: 6829655096609636697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_7
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 2066
+        width: 256
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96910fad63d389290800000000000000
+      internalID: -7883483841901356695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_8
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 2066
+        width: 236
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b5901945fb1bd90800000000000000
+      internalID: -7083670368945611958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_9
+      rect:
+        serializedVersion: 2
+        x: 2434
+        y: 2075
+        width: 275
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82cf3d40fa97b7b20800000000000000
+      internalID: 3133231758373551144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_10
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1540
+        width: 305
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc989d9497c1468a0800000000000000
+      internalID: -6312889470410978869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_11
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 1540
+        width: 302
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2618b1eec6eb7e5d0800000000000000
+      internalID: -3033246448950214302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_12
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 1539
+        width: 300
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec1903719dd6d430800000000000000
+      internalID: 3807474151758306531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_13
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 1540
+        width: 297
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fe322f0184ed3030800000000000000
+      internalID: 3476185730355707632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_14
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 1540
+        width: 294
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e51895cce924ab00800000000000000
+      internalID: 838841527501854180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_15
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 957
+        width: 291
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a911eb671dbd9f0800000000000000
+      internalID: -442529830440691125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_16
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 956
+        width: 289
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a127af4c8cf13310800000000000000
+      internalID: 1383164240141427112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_17
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 957
+        width: 284
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953593a132327dbb0800000000000000
+      internalID: -4911418234953444519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_18
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 957
+        width: 283
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c23801410384c8c0800000000000000
+      internalID: -3979912129279413568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumAttack_19
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 957
+        width: 278
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bb77a17cbe428920800000000000000
+      internalID: 2991039673795050422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

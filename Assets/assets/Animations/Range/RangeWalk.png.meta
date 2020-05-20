@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: fcd3edab6352d4c4fafdb1f75cf46f3c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4696569638622944643
+    second: RangeWalk_0
+  - first:
+      213: 2166710699510159631
+    second: RangeWalk_1
+  - first:
+      213: -1836678664838239879
+    second: RangeWalk_2
+  - first:
+      213: 5016773697193382783
+    second: RangeWalk_3
+  - first:
+      213: -6836220773613805632
+    second: RangeWalk_4
+  - first:
+      213: -3447750066413638842
+    second: RangeWalk_5
+  - first:
+      213: 5815769961971384268
+    second: RangeWalk_6
+  - first:
+      213: 8889130308891672930
+    second: RangeWalk_7
+  - first:
+      213: -4031264311032108943
+    second: RangeWalk_8
+  - first:
+      213: -2167795775694273675
+    second: RangeWalk_9
+  - first:
+      213: -3300420589384888007
+    second: RangeWalk_10
+  - first:
+      213: 3322431512998773651
+    second: RangeWalk_11
+  - first:
+      213: -6280771644056657047
+    second: RangeWalk_12
+  - first:
+      213: -442320370275545902
+    second: RangeWalk_13
+  - first:
+      213: -4265626719599458985
+    second: RangeWalk_14
+  - first:
+      213: -8092992019143155497
+    second: RangeWalk_15
+  - first:
+      213: -7838592202158788924
+    second: RangeWalk_16
+  - first:
+      213: -8416706123085632101
+    second: RangeWalk_17
+  - first:
+      213: 4892866987394760896
+    second: RangeWalk_18
+  - first:
+      213: 7088259540867414003
+    second: RangeWalk_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RangeWalk_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 2615
+        width: 205
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72aef21cce62deb0800000000000000
+      internalID: -4696569638622944643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_1
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 2617
+        width: 202
+        height: 359
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f095757c6e3b11e10800000000000000
+      internalID: 2166710699510159631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_2
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 2621
+        width: 203
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97927c74c7ec286e0800000000000000
+      internalID: -1836678664838239879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_3
+      rect:
+        serializedVersion: 2
+        x: 1967
+        y: 2616
+        width: 203
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f731cbbf8192f9540800000000000000
+      internalID: 5016773697193382783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_4
+      rect:
+        serializedVersion: 2
+        x: 2544
+        y: 2620
+        width: 203
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf5a9e1d6dd021a0800000000000000
+      internalID: -6836220773613805632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_5
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 2074
+        width: 210
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64be511e4912720d0800000000000000
+      internalID: -3447750066413638842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_6
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 2074
+        width: 214
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccff0b697f3c5b050800000000000000
+      internalID: 5815769961971384268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_7
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 2072
+        width: 218
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26185a75be88c5b70800000000000000
+      internalID: 8889130308891672930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_8
+      rect:
+        serializedVersion: 2
+        x: 1949
+        y: 2071
+        width: 220
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178a839b7721e08c0800000000000000
+      internalID: -4031264311032108943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_9
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 2071
+        width: 216
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 573862c3a317ae1e0800000000000000
+      internalID: -2167795775694273675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_10
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1499
+        width: 213
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9311458d5fc8232d0800000000000000
+      internalID: -3300420589384888007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_11
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 1499
+        width: 208
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3930bdaabd5ab1e20800000000000000
+      internalID: 3322431512998773651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_12
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 1502
+        width: 202
+        height: 359
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96328a8777736d8a0800000000000000
+      internalID: -6280771644056657047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_13
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 1499
+        width: 201
+        height: 359
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc8ecc77ff8cd9f0800000000000000
+      internalID: -442320370275545902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_14
+      rect:
+        serializedVersion: 2
+        x: 2544
+        y: 1504
+        width: 206
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7550cd949137dc4c0800000000000000
+      internalID: -4265626719599458985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_15
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 953
+        width: 211
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0a6e813aaefaf80800000000000000
+      internalID: -8092992019143155497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_16
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 953
+        width: 213
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cead2b3ce9b73390800000000000000
+      internalID: -7838592202158788924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_17
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 953
+        width: 212
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d20aaef5ad13b80800000000000000
+      internalID: -8416706123085632101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_18
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 950
+        width: 211
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c086ecf994f6e340800000000000000
+      internalID: 4892866987394760896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeWalk_19
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 953
+        width: 208
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7fc294f7e8e5260800000000000000
+      internalID: 7088259540867414003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -16,10 +16,17 @@ public class Unit : MonoBehaviour
   
     private int entityType;
     private Animator anim;
-    
-   
 
-  
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+       
+    }
+
+
+
+
     public void setUnit(float targetX,bool isPlayer,int type)
     {
         setType(isPlayer);
@@ -27,9 +34,8 @@ public class Unit : MonoBehaviour
         entityType = type;
         targetVec = new Vector3(targetX, transform.position.y, transform.position.z);
         enabledUnit = true;
+        anim.SetBool(constants.isAttacking, false);
 
-       // anim = GetComponent<Animator>();
-       // anim.SetBool(constants.isAttacking, false);
     }
     public void setUnitAttributes(int health, int minDamage,int maxDamage ,float damageDelay, int range, int speed)
     {
@@ -59,18 +65,18 @@ public class Unit : MonoBehaviour
     {
         if (detectEnemy())
         {
-            //anim.SetBool(constants.isAttacking, true);
+            anim.SetBool(constants.isAttacking, true);
             return;
         }
         else if (detectFriendly())
         {
 
-            //anim.SetBool(constants.isRunning, false);
+            anim.SetBool(constants.isRunning, false);
 
         }
         else
         {
-            //anim.SetBool(constants.isRunning, true);
+            anim.SetBool(constants.isRunning, true);
             float step = (float) speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetVec, step);
         }
@@ -92,23 +98,23 @@ public class Unit : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, range, enemyMask))
         {
             isAttacking = true;
-            if (hit.collider.CompareTag(constants.baseTag))
+            if (!hit.collider.CompareTag(constants.baseTag))
             {
                 if (!attackRunning)
-                    StartCoroutine(attackAction(isPlayer));
+                    StartCoroutine(attackAction());
                 return true;
             }
             else
             {
                 if (!attackRunning)
-                    StartCoroutine(attackAction());
+                    StartCoroutine(attackAction(isPlayer));
                 return true;
             }
         }
         else
         {
             if (isAttacking)
-                // anim.SetBool(constants.isAttacking, false);
+                anim.SetBool(constants.isAttacking, false);
                 isAttacking = false;
             return false;
         }
@@ -168,6 +174,7 @@ public class Unit : MonoBehaviour
     {
         attackRunning = true;
         yield return new WaitForSeconds(damageDelay);
+        print("Damage " + Time.time);
         if (health > 1)
         {
             Singleton.instance.attackUnit(returnDamage(), isPlayer,entityType);

@@ -113,7 +113,7 @@ public class EnemyManager : MonoBehaviour
             else if (distance > 60)
                 action = 40;
         }
-        print("distance " + action);
+
         return action;
     }
 
@@ -121,7 +121,7 @@ public class EnemyManager : MonoBehaviour
     private int considerPlayerHealth()
     {
         int playerHealth = returnPlayerBaseHealth();
-        print(playerHealth);
+
         int action = 0;
         if (playerHealth > 0 && playerHealth < 31)
             action = 40;
@@ -163,7 +163,7 @@ public class EnemyManager : MonoBehaviour
 
 
         int unitType = returnUnitType(unitRange);
-        spawner.spawnUnit(1, false);
+        spawner.spawnUnit(unitType, false);
     }
 
     IEnumerator aiReponseDelay()

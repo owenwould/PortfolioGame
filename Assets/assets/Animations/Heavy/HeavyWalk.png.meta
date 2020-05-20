@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: c8dbc419c7ffbd640a5e4c5de7d7eec8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 356843457832265681
+    second: HeavyWalk_0
+  - first:
+      213: -611315997675652318
+    second: HeavyWalk_1
+  - first:
+      213: -4490872122364167882
+    second: HeavyWalk_2
+  - first:
+      213: -1369098251840713649
+    second: HeavyWalk_3
+  - first:
+      213: 6687060597970254261
+    second: HeavyWalk_4
+  - first:
+      213: -9024414575407561300
+    second: HeavyWalk_5
+  - first:
+      213: 5301943248768760478
+    second: HeavyWalk_6
+  - first:
+      213: 1046015356488269126
+    second: HeavyWalk_7
+  - first:
+      213: 2932065341924484935
+    second: HeavyWalk_8
+  - first:
+      213: -4665495282264496768
+    second: HeavyWalk_9
+  - first:
+      213: 7948980593172818618
+    second: HeavyWalk_10
+  - first:
+      213: -6648205173141859259
+    second: HeavyWalk_11
+  - first:
+      213: 4169317980589744201
+    second: HeavyWalk_12
+  - first:
+      213: 2125521606757284101
+    second: HeavyWalk_13
+  - first:
+      213: -4896572070385534650
+    second: HeavyWalk_14
+  - first:
+      213: 1459096148977564750
+    second: HeavyWalk_15
+  - first:
+      213: 5571286648982549177
+    second: HeavyWalk_16
+  - first:
+      213: -8221805597370862077
+    second: HeavyWalk_17
+  - first:
+      213: -2778265201830394498
+    second: HeavyWalk_18
+  - first:
+      213: 1729281314630344400
+    second: HeavyWalk_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HeavyWalk_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 2466
+        width: 316
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7a388fb33c3f400800000000000000
+      internalID: 356843457832265681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_1
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 2468
+        width: 324
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b7709c65b2487f0800000000000000
+      internalID: -611315997675652318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_2
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 2456
+        width: 346
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63977ce29973da1c0800000000000000
+      internalID: -4490872122364167882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_3
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 2468
+        width: 345
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c0d6cc46cfffce0800000000000000
+      internalID: -1369098251840713649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_4
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 2454
+        width: 327
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b9378d2f263dcc50800000000000000
+      internalID: 6687060597970254261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_5
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1848
+        width: 315
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca589fec1c6d2c280800000000000000
+      internalID: -9024414575407561300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1846
+        width: 314
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a742a3b49449940800000000000000
+      internalID: 5301943248768760478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_7
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 1848
+        width: 314
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d3619bc61348e00800000000000000
+      internalID: 1046015356488269126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_8
+      rect:
+        serializedVersion: 2
+        x: 1756
+        y: 1848
+        width: 313
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747a4abc4e9c0b820800000000000000
+      internalID: 2932065341924484935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_9
+      rect:
+        serializedVersion: 2
+        x: 2472
+        y: 1848
+        width: 315
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0852d5772c4d04fb0800000000000000
+      internalID: -4665495282264496768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_10
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1152
+        width: 316
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba2a86ebb3705e60800000000000000
+      internalID: 7948980593172818618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_11
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 1152
+        width: 315
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54417f46e94dcb3a0800000000000000
+      internalID: -6648205173141859259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_12
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 1152
+        width: 315
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94063b40d946cd930800000000000000
+      internalID: 4169317980589744201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_13
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 1151
+        width: 318
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5097f2dc3ae5f7d10800000000000000
+      internalID: 2125521606757284101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_14
+      rect:
+        serializedVersion: 2
+        x: 2475
+        y: 1152
+        width: 322
+        height: 491
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649329725a1eb0cb0800000000000000
+      internalID: -4896572070385534650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_15
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 453
+        width: 327
+        height: 487
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4cb2f48730cf3410800000000000000
+      internalID: 1459096148977564750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_16
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 458
+        width: 338
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b23b7670bf215d40800000000000000
+      internalID: 5571286648982549177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_17
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 453
+        width: 346
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3063464ce5746ed80800000000000000
+      internalID: -8221805597370862077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_18
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 459
+        width: 334
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e750211d48e9179d0800000000000000
+      internalID: -2778265201830394498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyWalk_19
+      rect:
+        serializedVersion: 2
+        x: 2472
+        y: 458
+        width: 313
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de134b8134aff710800000000000000
+      internalID: 1729281314630344400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

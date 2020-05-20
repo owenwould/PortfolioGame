@@ -6,6 +6,8 @@ public class constants : MonoBehaviour
 {
     public const string enemyMaskName = "EnemyArmyLayer", playerMaskName = "PlayerArmyLayer";
     public const string enemyTag = "Enemy", playerTag = "Player", baseTag = "Base";
+    public const string lightTag = "Light", rangeTag = "Range", mediumTag = "Medium", heavyTag = "Heavy";
+
     public const int MAX_UNIT_COUNT = 10;
     public const int LIGHT_UNIT_TYPE = 1, RANGED_UNIT_TYPE = 2,MEDIUM_UNIT_TYPE = 3 ,HEAVY_UNIT_TYPE = 4;
     public const int LIGHT_UNIT_COST = 100, RANGE_UNIT_COST = 125, MEDIUM_UNIT_COST = 200,HEAVY_UNIT_COST = 400;

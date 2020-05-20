@@ -1,0 +1,632 @@
+fileFormatVersion: 2
+guid: 6eb53e7386af5c249add916db07cf83c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8971203635731160042
+    second: RangeAttack_0
+  - first:
+      213: -4076416868999171998
+    second: RangeAttack_1
+  - first:
+      213: 1641440951579988269
+    second: RangeAttack_2
+  - first:
+      213: 5249975163438665064
+    second: RangeAttack_3
+  - first:
+      213: -7917656401236121325
+    second: RangeAttack_4
+  - first:
+      213: 2594815159611308117
+    second: RangeAttack_5
+  - first:
+      213: -8308159371918827318
+    second: RangeAttack_6
+  - first:
+      213: 2965786661013680777
+    second: RangeAttack_7
+  - first:
+      213: -6777588469550570379
+    second: RangeAttack_8
+  - first:
+      213: 4224439100112362335
+    second: RangeAttack_9
+  - first:
+      213: -2060603832415855520
+    second: RangeAttack_10
+  - first:
+      213: 5717675014927608741
+    second: RangeAttack_11
+  - first:
+      213: -1074506072752053496
+    second: RangeAttack_12
+  - first:
+      213: -3339222919677942833
+    second: RangeAttack_13
+  - first:
+      213: 4514709054424516353
+    second: RangeAttack_14
+  - first:
+      213: 4913704332536664905
+    second: RangeAttack_15
+  - first:
+      213: -2778239398592004238
+    second: RangeAttack_16
+  - first:
+      213: -3173658926498424287
+    second: RangeAttack_17
+  - first:
+      213: 6625917618435564290
+    second: RangeAttack_18
+  - first:
+      213: -3497014402458947302
+    second: RangeAttack_19
+  - first:
+      213: -2919411457852942325
+    second: RangeAttack_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RangeAttack_0
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 2588
+        width: 201
+        height: 355
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6142d8423d1ef7380800000000000000
+      internalID: -8971203635731160042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_1
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 2592
+        width: 204
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260f4e69478ad67c0800000000000000
+      internalID: -4076416868999171998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_2
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 2592
+        width: 204
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2154b649d197c610800000000000000
+      internalID: 1641440951579988269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_3
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 2592
+        width: 209
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86d82687898abd840800000000000000
+      internalID: 5249975163438665064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_4
+      rect:
+        serializedVersion: 2
+        x: 2469
+        y: 2592
+        width: 215
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31929bed375de1290800000000000000
+      internalID: -7917656401236121325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_5
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 2082
+        width: 230
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5583e66c3a2a20420800000000000000
+      internalID: 2594815159611308117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_6
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 2082
+        width: 248
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac0227bd11d73bc80800000000000000
+      internalID: -8308159371918827318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_7
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2082
+        width: 247
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 982ff493147982920800000000000000
+      internalID: 2965786661013680777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_8
+      rect:
+        serializedVersion: 2
+        x: 1835
+        y: 2081
+        width: 247
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 574a7a6323b21f1a0800000000000000
+      internalID: -6777588469550570379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_9
+      rect:
+        serializedVersion: 2
+        x: 2435
+        y: 2082
+        width: 249
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bd771caf830aa30800000000000000
+      internalID: 4224439100112362335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_10
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1578
+        width: 249
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c5b026bb34763e0800000000000000
+      internalID: -2060603832415855520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_11
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 1707
+        width: 123
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5abe2ede123495f40800000000000000
+      internalID: 5717675014927608741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_12
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 1578
+        width: 215
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8032d987b669611f0800000000000000
+      internalID: -1074506072752053496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_13
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1578
+        width: 210
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3e0ce4272b8a1d0800000000000000
+      internalID: -3339222919677942833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_14
+      rect:
+        serializedVersion: 2
+        x: 1835
+        y: 1608
+        width: 209
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 107863d07f777ae30800000000000000
+      internalID: 4514709054424516353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_15
+      rect:
+        serializedVersion: 2
+        x: 2435
+        y: 1606
+        width: 207
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94355287e0cf03440800000000000000
+      internalID: 4913704332536664905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_16
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1051
+        width: 204
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27fbde99cf5b179d0800000000000000
+      internalID: -2778239398592004238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_17
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 1051
+        width: 202
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a50d76506e4f3d0800000000000000
+      internalID: -3173658926498424287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_18
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1051
+        width: 202
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203aad5e7fcf3fb50800000000000000
+      internalID: 6625917618435564290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_19
+      rect:
+        serializedVersion: 2
+        x: 1833
+        y: 1052
+        width: 202
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11720fcdeb187fc0800000000000000
+      internalID: -3497014402458947302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangeAttack_20
+      rect:
+        serializedVersion: 2
+        x: 2435
+        y: 1050
+        width: 201
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08587d2fba2c77d0800000000000000
+      internalID: -2919411457852942325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

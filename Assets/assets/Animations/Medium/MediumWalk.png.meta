@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: 64553f3c73247704fa203f3646b8cabd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4798796807543040413
+    second: MediumWalk_0
+  - first:
+      213: 640969500362005943
+    second: MediumWalk_1
+  - first:
+      213: 6907249954374766826
+    second: MediumWalk_2
+  - first:
+      213: 398251016653546195
+    second: MediumWalk_3
+  - first:
+      213: -8962636291588819792
+    second: MediumWalk_4
+  - first:
+      213: 3955424828505023542
+    second: MediumWalk_5
+  - first:
+      213: 4792645202220338386
+    second: MediumWalk_6
+  - first:
+      213: -2817175283828418589
+    second: MediumWalk_7
+  - first:
+      213: 795813042864283794
+    second: MediumWalk_8
+  - first:
+      213: -2829224261101186689
+    second: MediumWalk_9
+  - first:
+      213: -1040646699818858371
+    second: MediumWalk_10
+  - first:
+      213: 397355511146248862
+    second: MediumWalk_11
+  - first:
+      213: 1365779783869374455
+    second: MediumWalk_12
+  - first:
+      213: -3799056503254185463
+    second: MediumWalk_13
+  - first:
+      213: -4465672888258177707
+    second: MediumWalk_14
+  - first:
+      213: 5927288146796609693
+    second: MediumWalk_15
+  - first:
+      213: -4477669560756585494
+    second: MediumWalk_16
+  - first:
+      213: 331379806121361764
+    second: MediumWalk_17
+  - first:
+      213: -3072860286898678882
+    second: MediumWalk_18
+  - first:
+      213: 3607330895048816643
+    second: MediumWalk_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MediumWalk_0
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 2557
+        width: 285
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99a1e67540c89240800000000000000
+      internalID: 4798796807543040413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_1
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 2557
+        width: 277
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bddfe45d5e25e800800000000000000
+      internalID: 640969500362005943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_2
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 2558
+        width: 265
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae05751cc3b7bdf50800000000000000
+      internalID: 6907249954374766826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_3
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 2557
+        width: 261
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2a21b803fd68500800000000000000
+      internalID: 398251016653546195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_4
+      rect:
+        serializedVersion: 2
+        x: 2557
+        y: 2558
+        width: 269
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4f2d467c15e9380800000000000000
+      internalID: -8962636291588819792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_5
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 2012
+        width: 274
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6346dcebced74e630800000000000000
+      internalID: 3955424828505023542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_6
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 2012
+        width: 280
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dcc2dc3b65e28240800000000000000
+      internalID: 4792645202220338386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_7
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 2011
+        width: 283
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e79561610267e8d0800000000000000
+      internalID: -2817175283828418589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_8
+      rect:
+        serializedVersion: 2
+        x: 1931
+        y: 2011
+        width: 295
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2906c8ffebb4b0b00800000000000000
+      internalID: 795813042864283794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_9
+      rect:
+        serializedVersion: 2
+        x: 2513
+        y: 2012
+        width: 313
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f71952f36839cb8d0800000000000000
+      internalID: -2829224261101186689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_10
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1499
+        width: 326
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d784d901751ee81f0800000000000000
+      internalID: -1040646699818858371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_11
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 1502
+        width: 337
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a7a6b6bb0b38500800000000000000
+      internalID: 397355511146248862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_12
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 1504
+        width: 338
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff91fa2a7934f210800000000000000
+      internalID: 1365779783869374455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_13
+      rect:
+        serializedVersion: 2
+        x: 1887
+        y: 1507
+        width: 339
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a85e11d3a074bc0800000000000000
+      internalID: -3799056503254185463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_14
+      rect:
+        serializedVersion: 2
+        x: 2487
+        y: 1507
+        width: 339
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55557441b2eb602c0800000000000000
+      internalID: -4465672888258177707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_15
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 944
+        width: 334
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9002375a25f14250800000000000000
+      internalID: 5927288146796609693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_16
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 944
+        width: 326
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb3689124f1cd1c0800000000000000
+      internalID: -4477669560756585494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_17
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 944
+        width: 315
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4610a9d8d2c499400800000000000000
+      internalID: 331379806121361764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_18
+      rect:
+        serializedVersion: 2
+        x: 1887
+        y: 944
+        width: 304
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93dffa89d10b55d0800000000000000
+      internalID: -3072860286898678882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumWalk_19
+      rect:
+        serializedVersion: 2
+        x: 2509
+        y: 946
+        width: 295
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3083daa2650df0230800000000000000
+      internalID: 3607330895048816643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

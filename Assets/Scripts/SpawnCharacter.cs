@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnCharacter : MonoBehaviour
 {
     
-    [SerializeField] GameObject obj;
+    [SerializeField] GameObject[] unitObjs;
     [SerializeField] Transform playerSpawnPointTran, enemySpawnPointTran;
     [SerializeField] GameManager gameManager;
     [SerializeField] Upgrades upgradesScript; 
@@ -121,7 +121,11 @@ public class SpawnCharacter : MonoBehaviour
             vec = enemySpawnPosition;
             targetPos = playerSpawnPostion.x;
         }
-        GameObject entity = Instantiate(obj, vec, Quaternion.identity);
+
+
+
+        int unitIndex = getUnitIndex(iEntityType);
+        GameObject entity = Instantiate(unitObjs[unitIndex], vec, Quaternion.identity);
         Unit unitScript = entity.AddComponent<Unit>();
         unitScript.setUnit(targetPos, isPlayer,iEntityType);
 
@@ -218,6 +222,32 @@ public class SpawnCharacter : MonoBehaviour
                 break;
         }
         return canAfford;
+    }
+
+    private int getUnitIndex(int unitType)
+    {
+        string unitTag = "";
+        switch (unitType)
+        {
+            case constants.LIGHT_UNIT_TYPE:
+                unitTag = constants.lightTag;
+                break;
+            case constants.RANGED_UNIT_TYPE:
+                unitTag = constants.rangeTag;
+                break;
+            case constants.MEDIUM_UNIT_TYPE:
+                unitTag = constants.mediumTag;
+                break;
+            case constants.HEAVY_UNIT_TYPE:
+                unitTag = constants.heavyTag;
+                break;
+        }
+        for (int i=0; i < unitObjs.Length; i++)
+        {
+            if (unitObjs[i].CompareTag(unitTag))
+                return i;
+        }
+        return -1;
     }
 
 
