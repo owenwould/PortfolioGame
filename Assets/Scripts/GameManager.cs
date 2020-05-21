@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GoldGenerator goldGenerator;
     [SerializeField] EnemyManager enemyManager;
     [SerializeField] Upgrades upgradeScript;
+    [SerializeField] MusicManager musicManager;
+    
     private int playerGold, enemyGold,unitCountPlayer,unitCountEnemy;
     public static bool gameover = false,mainMenuMode = true;
 
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
         playerBase.startGame();
         enemyBase.startGame();
         enemyManager.begin();
+        startMusic();
+
     } 
     private void clearArmies()
     {
@@ -278,6 +282,7 @@ public class GameManager : MonoBehaviour
         {
             unit.setIdle();
         }
+        
         goldGenerator.stopGoldGen();
         gameover = true;
         uiManager.gameover(isPlayer);
@@ -292,6 +297,15 @@ public class GameManager : MonoBehaviour
     public bool returnIsAttacking()
     {
         return enemyArmy[0].getIsAttacking();
+    }
+
+    public void startMusic()
+    {
+        musicManager.startMusic();
+    }
+    public void stopMusic()
+    {
+        musicManager.stopMusic();
     }
 
    

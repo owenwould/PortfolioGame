@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image progressLight, progressRange, progressMedium, progressHeavy;
     [SerializeField] TextMeshProUGUI lightSpawnCount, rangeSpawnCount, mediumSpawnCount, heavySpawnCount;
     List<int> lightQueue, rangedQueue, mediumQueue, heavyQueue;
+    [SerializeField] muteButton muteButtonScript;
+
  
     const string sUnitDefault = "/10";
     public const int LIGHT_UNIT_COST = 100;
@@ -56,6 +58,7 @@ public class UIManager : MonoBehaviour
         setCameraFocus(false);
         setGoldValue(playerGold);
         setUnitCount(0);
+        muteButtonScript.setMutedButton();
     }
     public void setCameraFocus(bool isLocked)
     {
@@ -83,6 +86,7 @@ public class UIManager : MonoBehaviour
 
     public void displayMainMenu()
     {
+        gameManager.stopMusic();
         mainMenuScript.setPlayingUI(false);
         gameoverUI.SetActive(false);
     }
