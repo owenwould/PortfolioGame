@@ -33,20 +33,20 @@ public class constants : MonoBehaviour
     
 
     //Unit stats - light
-    public const int LIGHT_HEALTH = 140,  LIGHT_MIN_DAMAGE = 25, LIGHT_MAX_DAMAGE = 35,LIGHT_SPEED = 5, LIGHT_RANGE = 1;
-    public const float LIGHT_DAMAGE_DELAY = 0.70f;
+    public const int LIGHT_HEALTH = 210,  LIGHT_MIN_DAMAGE = 20, LIGHT_MAX_DAMAGE = 35,LIGHT_SPEED = 5, LIGHT_RANGE = 1;
+    public const float LIGHT_DAMAGE_DELAY = 1.0f;
 
     //Unit stats - medium 
-    public const int MEDIUM_HEALTH = 200, MEDIUM_MIN_DAMAGE = 30, MEDIUM_MAX_DAMAGE = 35, MEDIUM_SPEED = 4, MEDIUM_RANGE = 1;
-    public const float MEDIUM_DAMAGE_DELAY = 0.95f;
+    public const int MEDIUM_HEALTH = 300, MEDIUM_MIN_DAMAGE = 35, MEDIUM_MAX_DAMAGE = 40, MEDIUM_SPEED = 3, MEDIUM_RANGE = 1;
+    public const float MEDIUM_DAMAGE_DELAY = 0.9f;
 
     //Unit Stats - Ranged
-    public const int RANGED_HEALTH = 100, RANGED_MIN_DAMAGE = 15, RANGED_MAX_DAMAGE = 35, RANGED_SPEED = 6, RANGED_RANGE = 6;
-    public const float RANGED_DAMAGE_DELAY = 0.50f; 
+    public const int RANGED_HEALTH = 140, RANGED_MIN_DAMAGE = 15, RANGED_MAX_DAMAGE = 30, RANGED_SPEED = 4, RANGED_RANGE = 6;
+    public const float RANGED_DAMAGE_DELAY = 1.3f; 
 
     //Unit Stats - Heavy
-    public const int HEAVY_HEALTH = 400, HEAVY_MIN_DAMAGE = 30, HEAVY_MAX_DAMAGE = 50, HEAVY_SPEED = 3, HEAVY_RANGE = 1;
-    public const float HEAVY_DAMAGE_DELAY = 0.80f;
+    public const int HEAVY_HEALTH = 400, HEAVY_MIN_DAMAGE = 40, HEAVY_MAX_DAMAGE = 50, HEAVY_SPEED = 2, HEAVY_RANGE = 1;
+    public const float HEAVY_DAMAGE_DELAY = 1.6f;
 
 
     public const string HEALTH_UPGRADE_TEXT = "Upgrade Health", DAMAGE_UPGRADE_TEXT = "Upgrade Damage", SPEED_UPGRADE_TEXT = "Upgrade Speed", RANGE_UPGRADE_TEXT = "Upgrade Range",UPGRADE_COMPLETE = "Complete";

@@ -33,7 +33,6 @@ public class Unit : MonoBehaviour
         this.isPlayer = isPlayer;
         entityType = type;
         targetVec = new Vector3(targetX, transform.position.y, transform.position.z);
-        enabledUnit = true;
         anim.SetBool(constants.isAttacking, false);
 
     }
@@ -45,9 +44,7 @@ public class Unit : MonoBehaviour
         this.damageDelay = damageDelay;
         this.range = range;
         this.speed = speed;
-
-
-        
+        StartCoroutine(wait());
     }
 
 
@@ -68,11 +65,10 @@ public class Unit : MonoBehaviour
             anim.SetBool(constants.isAttacking, true);
             return;
         }
-        else if (detectFriendly())
+        else if  (detectFriendly())
         {
-
             anim.SetBool(constants.isRunning, false);
-
+            
         }
         else
         {
@@ -174,7 +170,7 @@ public class Unit : MonoBehaviour
     {
         attackRunning = true;
         yield return new WaitForSeconds(damageDelay);
-        print("Damage " + Time.time);
+
         if (health > 1)
         {
             Singleton.instance.attackUnit(returnDamage(), isPlayer,entityType);
@@ -221,5 +217,18 @@ public class Unit : MonoBehaviour
     public int getUnitType()
     {
         return entityType;
+    }
+
+    public void setIdle()
+    {
+        anim.SetBool(constants.isAttacking, false);
+        anim.SetBool(constants.isRunning, false);
+    }
+
+    IEnumerator wait()
+    {
+        enabledUnit = false;
+        yield return new WaitForSeconds(0.2f);
+        enabledUnit = true;
     }
 }

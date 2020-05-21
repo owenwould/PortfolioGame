@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] MainMenuMode mainMenuScript;
     [SerializeField] SpawnCharacter spawnCharacterScript;
     [SerializeField] TextMeshProUGUI gameoverText;
-    [SerializeField] GameObject gameoverUI,upgradesUI;
+    [SerializeField] GameObject gameoverUI,upgradesUI,playingUI;
     bool lightDelay, mediumDelay, rangeDelay, heavyDelay;
     [SerializeField] Image progressLight, progressRange, progressMedium, progressHeavy;
     [SerializeField] TextMeshProUGUI lightSpawnCount, rangeSpawnCount, mediumSpawnCount, heavySpawnCount;
@@ -66,9 +66,12 @@ public class UIManager : MonoBehaviour
     }
     public void gameover(bool isPlayer)
     {
+        playingUI.SetActive(false);
         upgradesUI.SetActive(false);
         spawnCharacterScript.GameOver();
         gameoverUI.SetActive(true);
+       
+        
 
         if (isPlayer)
             gameoverText.SetText("Gameover Player Won");

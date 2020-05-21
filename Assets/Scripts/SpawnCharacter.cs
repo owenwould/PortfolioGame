@@ -9,15 +9,13 @@ public class SpawnCharacter : MonoBehaviour
     [SerializeField] Transform playerSpawnPointTran, enemySpawnPointTran;
     [SerializeField] GameManager gameManager;
     [SerializeField] Upgrades upgradesScript; 
-    Vector3 playerSpawnPostion, enemySpawnPosition;
+
     List<int> playerEntityQueue, enemyEntityQueue;
     static bool bPlayerCoroutineRunning,bEnemyCorountineRunning;
     [SerializeField] UIManager uiManager;
     void Start()
     {
-        
-        playerSpawnPostion = playerSpawnPointTran.position;
-        enemySpawnPosition = enemySpawnPointTran.position;
+       
         bPlayerCoroutineRunning = false;
         bEnemyCorountineRunning = false;
         playerEntityQueue = new List<int>(constants.MAX_UNIT_COUNT);
@@ -109,28 +107,27 @@ public class SpawnCharacter : MonoBehaviour
 
     void spawnPlayerEntity(int iEntityType,bool isPlayer)
     {
-        Vector3 vec;
+        Vector3 pos;
         float targetPos;
         if (isPlayer)
         {
-            vec = playerSpawnPostion;
-            targetPos = enemySpawnPosition.x;
+            pos = playerSpawnPointTran.position;
+            targetPos = enemySpawnPointTran.position.x;
         }
         else
         {
-            vec = enemySpawnPosition;
-            targetPos = playerSpawnPostion.x;
+            pos= enemySpawnPointTran.position ;
+            targetPos = playerSpawnPointTran.position.x;
         }
 
 
 
         int unitIndex = getUnitIndex(iEntityType);
-        GameObject entity = Instantiate(unitObjs[unitIndex], vec, Quaternion.identity);
+        GameObject entity = Instantiate(unitObjs[unitIndex], pos, Quaternion.identity);
         Unit unitScript = entity.AddComponent<Unit>();
+        UnitTypeStats unitStats = upgradesScript.unitValues(iEntityType, isPlayer);
+        unitScript.setUnitAttributes(unitStats.getHealth(), unitStats.getMinDamage(), unitStats.getMaxDamage(), unitStats.getDamageDelay(), unitStats.getRange(), unitStats.getSpeed());
         unitScript.setUnit(targetPos, isPlayer,iEntityType);
-
-        UnitTypeStats unitStats = upgradesScript.unitValues(iEntityType,isPlayer);
-        unitScript.setUnitAttributes(unitStats.getHealth(), unitStats.getMinDamage(),unitStats.getMaxDamage(), unitStats.getDamageDelay(), unitStats.getRange(), unitStats.getSpeed());
         gameManager.addToPlayerArmy(unitScript,isPlayer,entity);
     }
     IEnumerator PlayerQueueCoroutine()

@@ -122,17 +122,25 @@ public class GameManager : MonoBehaviour
 
     public void attackUnit(int damage, bool isPlayersUnit,int currentType)
     {
-        int fullDamage; 
+        int fullDamage;
 
         if (isPlayersUnit)
         {
-            fullDamage = damage + checkForCounter(currentType, enemyArmy[0].getUnitType());
-            enemyArmy[0].takeDamage(fullDamage);
+            if (enemyArmy.Count > 0)
+            {
+                fullDamage = damage + checkForCounter(currentType, enemyArmy[0].getUnitType());
+                enemyArmy[0].takeDamage(fullDamage);
+            }
+               
         }
         else
         {
-            fullDamage = damage + checkForCounter(currentType, playerArmy[0].getUnitType());
-            playerArmy[0].takeDamage(fullDamage);
+            if (playerArmy.Count > 0)
+            {
+                fullDamage = damage + checkForCounter(currentType, playerArmy[0].getUnitType());
+                playerArmy[0].takeDamage(fullDamage);
+            }
+              
         }
            
     }
@@ -260,6 +268,16 @@ public class GameManager : MonoBehaviour
     private void gameoverState(bool isPlayer)
     {
         enemyManager.StopAllCoroutines();
+
+        foreach (Unit unit in enemyArmy)
+        {
+            unit.setIdle();
+        }
+
+        foreach (Unit unit in playerArmy)
+        {
+            unit.setIdle();
+        }
         goldGenerator.stopGoldGen();
         gameover = true;
         uiManager.gameover(isPlayer);
