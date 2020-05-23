@@ -47,6 +47,18 @@ public class SpawnCharacter : MonoBehaviour
         {
             checkSpawnEntity(constants.LIGHT_UNIT_TYPE, false);
         }
+        else if (Input.GetKeyUp(KeyCode.C)) {
+            checkSpawnEntity(constants.RANGED_UNIT_TYPE, false);
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            checkSpawnEntity(constants.MEDIUM_UNIT_TYPE, false);
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            checkSpawnEntity(constants.HEAVY_UNIT_TYPE, false);
+        }
+
     }
 
     public void spawnUnit(int unitType,bool isPlayer)
@@ -120,7 +132,7 @@ public class SpawnCharacter : MonoBehaviour
 
     void spawnPlayerEntity(int iEntityType,bool isPlayer)
     {
-        UnitTypeStats unitTypeStats = new UnitTypeStats();
+     
         Vector3 pos;
         float targetPos;
         if (isPlayer)
@@ -128,27 +140,17 @@ public class SpawnCharacter : MonoBehaviour
        
             pos = playerSpawnPointTran.position;
             targetPos = enemySpawnPointTran.position.x;
-            unitTypeStats = upgradesScript.returnPlayerUnitStats(iEntityType);
         }
-        else if (!isPlayer)
+        else 
         {
-           
             pos= enemySpawnPointTran.position ;
             targetPos = playerSpawnPointTran.position.x;
-            unitTypeStats = upgradesScript.returnEnemyUnitStats(iEntityType);
         }
-        else
-        {
-            print("XX");
-            pos = enemySpawnPointTran.position;
-            targetPos = playerSpawnPointTran.position.x;
-        }
-
-
-        print(unitTypeStats.getHealth());
+       
         int unitIndex = getUnitIndex(iEntityType);
         GameObject entity = Instantiate(unitObjs[unitIndex], pos, Quaternion.identity);
         Unit unitScript = entity.AddComponent<Unit>();
+        UnitTypeStats unitTypeStats = upgradesScript.returnUnitStats(isPlayer, iEntityType);
         unitScript.setUnitAttributes(unitTypeStats.getHealth(), unitTypeStats.getMinDamage(), unitTypeStats.getMaxDamage(), unitTypeStats.getDamageDelay(), unitTypeStats.getRange(), unitTypeStats.getSpeed());
         unitScript.setUnit(targetPos, isPlayer,iEntityType,getID(isPlayer));
         gameManager.addToPlayerArmy(unitScript,isPlayer,entity);

@@ -71,26 +71,18 @@ public class EnemyManager : MonoBehaviour
 
         if (!canBuyUnit(unitCount, gold))
             return;
-
-      
-       
-        /*
+        
         if (!upgradesComplete)
         {
-            if (unitCount < 7)
+            if (unitCount < 3)
                 chooseUnit(gold);
             else
             {
-              //  makeEducatedDecision(gold);
+              makeEducatedDecision(gold);
             }
         }
         else
             chooseUnit(gold);
-
-       */
-     
-        upgradeAction(gold);
-    
     }
 
 
@@ -171,27 +163,23 @@ public class EnemyManager : MonoBehaviour
        
         return action;
     }
-    private void finalDecision(int healthAspect, int distanceAspect,int gold)
+    private void finalDecision(int healthAspect, int distanceAspect, int gold)
     {
-       
+
         int action = healthAspect + distanceAspect;
-      
-        if (!upgradesComplete)
+
+
+        if (action > 0 && action < 51)
         {
-            if (action > 0 && action < 51)
-            {
-                //print("up");
-                //upgradeAction(gold);
-                return;
-            }
-            else if (action > 50 && action < 101)
-            {
-                //print("Spawn");
-                chooseUnit(gold);
-            }
+            print("up");
+            upgradeAction(gold);
+            return;
         }
-        else
+        else if (action > 50 && action < 101)
+        {
+            print("Spawn");
             chooseUnit(gold);
+        }
 
 
 
@@ -205,11 +193,8 @@ public class EnemyManager : MonoBehaviour
             unitRange = unitPoolRange(gold, false);
         else
             unitRange = unitPoolRange(gold, true);
-
-
-
-        //int unitType = returnUnitType(unitRange);
-        spawner.spawnUnit(constants.LIGHT_UNIT_TYPE, false);
+        int unitType = returnUnitType(unitRange);
+        spawner.spawnUnit(unitType, false);
     }
 
     IEnumerator aiReponseDelay()
@@ -339,83 +324,53 @@ public class EnemyManager : MonoBehaviour
         decideUpgrade(gold);
     }
 
-
-
-
    private void decideUpgrade(int gold)
    {
 
-        print("X");
         if (gold < constants.firstUpgradeCost)
             return;
-        
-        if (upgradeScript.checkEntireUpgradeState(constants.initialStage))
-        {
-            for (int i = 0; i < upgradeListOrder.Count; i++)
-            {
-                //Check for initial states
-                if (upgradeScript.checkEnemyUpgradeState(constants.initialStage, upgradeListOrder[i]))
-                {
-                    //Upgrade that attribute 
-                    int[] upgrade = constants.retrurnUpgradeKeyComponent(upgradeListOrder[i]);
-                    int unitType = upgrade[0];
-                    int attributeType = upgrade[1];
-                    upgradeScript.enemyUpgrade(upgradeListOrder[i], attributeType, unitType, constants.initialStage,constants.firstUpgradeCost);
-                    return;
-                }
 
-            }
-        }
-
-        
+        if (upgradeStage(constants.initialStage, constants.firstUpgradeCost))
+            return;
+      
         if (gold < constants.secondUpgradeCost)
             return;
 
-
-        if (upgradeScript.checkEntireUpgradeState(constants.stage_one))
-        {
-            for (int j = 0; j < upgradeListOrder.Count; j++)
-            {
-                //Check for first upgrades 
-                if (upgradeScript.checkEnemyUpgradeState(constants.stage_one, upgradeListOrder[j]))
-                {
-                    int[] upgrade = constants.retrurnUpgradeKeyComponent(upgradeListOrder[j]);
-                    int unitType = upgrade[0];
-                    int attributeType = upgrade[1];
-                    upgradeScript.enemyUpgrade(upgradeListOrder[j], attributeType, unitType, constants.stage_one, constants.secondUpgradeCost);
-                    return;
-                }
-            }
-        }
+        if (upgradeStage(constants.stage_one, constants.secondUpgradeCost))
+            return;
 
         if (gold < constants.finalUpgradeCost)
             return;
 
+        if (upgradeStage(constants.stage_two, constants.finalUpgradeCost))
+            return;
+        else
+            upgradesComplete = true;
+   }
 
-        if (upgradeScript.checkEntireUpgradeState(constants.stage_two))
+    private bool upgradeStage(int stage, int cost)
+    {
+        if (upgradeScript.checkEntireUpgradeState(stage))
         {
-
-            for (int k = 0; k < upgradeListOrder.Count; k++)
+            for (int j = 0; j < upgradeListOrder.Count; j++)
             {
-                //Check for second upgrades 
-                if (upgradeScript.checkEnemyUpgradeState(constants.stage_two, upgradeListOrder[k]))
+                //Check for first upgrades 
+                if (upgradeScript.checkEnemyUpgradeState(stage, upgradeListOrder[j]))
                 {
-                    int[] upgrade = constants.retrurnUpgradeKeyComponent(upgradeListOrder[k]);
+                    int[] upgrade = constants.retrurnUpgradeKeyComponent(upgradeListOrder[j]);
                     int unitType = upgrade[0];
                     int attributeType = upgrade[1];
-                    upgradeScript.enemyUpgrade(upgradeListOrder[k], attributeType, unitType, constants.stage_two, constants.finalUpgradeCost);
-                    return;
+                    upgradeScript.enemyUpgrade(upgradeListOrder[j], attributeType, unitType, stage, cost);
+                    return true;
                 }
             }
+            return false;
         }
         else
         {
-            upgradesComplete = true;
-            return;
+            return false;
         }
-        
-         
-   }
+    }
 
    
 

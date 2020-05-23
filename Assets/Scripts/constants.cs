@@ -68,17 +68,7 @@ public class constants : MonoBehaviour
     }
 
 
-    public static int returnCurrentStage(int currentValue, int initial, int stageOne, int stageTwo)
-    {
-        if (currentValue == initial)
-            return initialStage;
-        else if (currentValue == stageOne)
-            return stage_one;
-        else if (currentValue == stageTwo)
-            return stage_two;
-        else
-            return stage_final;
-    }
+   
 
     public static int returnNewValue(int originalValue, int stage)
     {
