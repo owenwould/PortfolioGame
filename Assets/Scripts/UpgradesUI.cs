@@ -14,9 +14,23 @@ public class UpgradesUI : MonoBehaviour
     [SerializeField] Upgrades upgradeScript;
     [SerializeField] TextMeshProUGUI topUpgradeText, bottomUpgradeText;
     [SerializeField] GameObject lightHealthButton, lightDamageButton, mediumSpeedButton, mediumDamageButton, rangedRangeButton, rangedDamageButton, heavyHealthButton, heavyDamageButton;
+    TextMeshProUGUI lightHealthText, lightDamageText, mediumSpeedText, mediumDamageText, rangedRangeText, rangedDamageText, heavyHealthText, heavyDamageText;
 
-   
+    private void Start()
+    {
+        lightHealthText = lightHealthButton.GetComponentInChildren<TextMeshProUGUI>();
+        lightDamageText = lightDamageButton.GetComponentInChildren<TextMeshProUGUI>();
+        
+        mediumSpeedText = mediumSpeedButton.GetComponentInChildren<TextMeshProUGUI>(); 
+        mediumDamageText = mediumDamageButton.GetComponentInChildren<TextMeshProUGUI>(); 
 
+        rangedRangeText = rangedRangeButton.GetComponentInChildren<TextMeshProUGUI>();
+        rangedDamageText = rangedDamageButton.GetComponentInChildren<TextMeshProUGUI>();
+        
+        heavyHealthText = heavyHealthButton.GetComponentInChildren<TextMeshProUGUI>();
+        heavyDamageText = heavyDamageButton.GetComponentInChildren<TextMeshProUGUI>();
+
+    }
 
 
     public void changeUpgradeCanvasState()
@@ -51,23 +65,23 @@ public class UpgradesUI : MonoBehaviour
         {
             case constants.LIGHT_UNIT_TYPE:
                 displayButtons(lightUpgradeButtons,constants.LIGHT_UNIT_TYPE);
-                setCurrentProgress(constants.LIGHT_UNIT_TYPE, constants.attribute_tpye_health, true,lightHealthButton);
-                setCurrentProgress(constants.LIGHT_UNIT_TYPE, constants.attribute_type_damage, false,lightDamageButton);
+                setCurrentProgress(constants.LIGHT_UNIT_TYPE, constants.attribute_tpye_health, true,lightHealthButton,lightHealthText);
+                setCurrentProgress(constants.LIGHT_UNIT_TYPE, constants.attribute_type_damage, false,lightDamageButton,lightDamageText);
                 break;
             case constants.MEDIUM_UNIT_TYPE:
                 displayButtons(mediumUpgradeButtons,constants.MEDIUM_UNIT_TYPE);
-                setCurrentProgress(constants.MEDIUM_UNIT_TYPE, constants.attribute_type_speed, true,mediumSpeedButton);
-                setCurrentProgress(constants.MEDIUM_UNIT_TYPE, constants.attribute_type_damage, false,mediumDamageButton);
+                setCurrentProgress(constants.MEDIUM_UNIT_TYPE, constants.attribute_type_speed, true,mediumSpeedButton,mediumSpeedText);
+                setCurrentProgress(constants.MEDIUM_UNIT_TYPE, constants.attribute_type_damage, false,mediumDamageButton,mediumDamageText);
                 break;
             case constants.RANGED_UNIT_TYPE:
                 displayButtons(rangedUpgradeButtons,constants.RANGED_UNIT_TYPE);
-                setCurrentProgress(constants.RANGED_UNIT_TYPE, constants.attribute_type_range, true,rangedRangeButton);
-                setCurrentProgress(constants.RANGED_UNIT_TYPE, constants.attribute_type_damage, false,rangedDamageButton);
+                setCurrentProgress(constants.RANGED_UNIT_TYPE, constants.attribute_type_range, true,rangedRangeButton,rangedRangeText);
+                setCurrentProgress(constants.RANGED_UNIT_TYPE, constants.attribute_type_damage, false,rangedDamageButton,rangedDamageText);
                 break;
             case constants.HEAVY_UNIT_TYPE:
                 displayButtons(heavyUpgradeButtons,constants.HEAVY_UNIT_TYPE);
-                setCurrentProgress(constants.HEAVY_UNIT_TYPE, constants.attribute_tpye_health, true,heavyHealthButton);
-                setCurrentProgress(constants.HEAVY_UNIT_TYPE, constants.attribute_type_damage, false,heavyDamageButton);
+                setCurrentProgress(constants.HEAVY_UNIT_TYPE, constants.attribute_tpye_health, true,heavyHealthButton,heavyHealthText);
+                setCurrentProgress(constants.HEAVY_UNIT_TYPE, constants.attribute_type_damage, false,heavyDamageButton,heavyDamageText);
                 break;
         }
     }
@@ -119,11 +133,19 @@ public class UpgradesUI : MonoBehaviour
         }
     }
 
-    public void setCurrentProgress(int unitType,int attributeType,bool isTop,GameObject ButtonObj)
+    public void setCurrentProgress(int unitType,int attributeType,bool isTop,GameObject ButtonObj,TextMeshProUGUI buttonText)
     {
-        int currentStage = upgradeScript.returnCurrentProgress(unitType,attributeType);
+
+
+        int upgradeKey = constants.getUpgradeKey(unitType, attributeType);
+        int currentStage = upgradeScript.returnCurrentProgress(upgradeKey);
         string upgradeName;
         int progress;
+
+
+        setButtonText(buttonText, currentStage);
+
+
         if (currentStage == constants.stage_final)
         {
             progress = 100;
@@ -135,8 +157,6 @@ public class UpgradesUI : MonoBehaviour
         }
         else
         {
-
-
             upgradeName = constants.returnUpgradeText(attributeType);
             progress = currentStage * 33;
         }
@@ -152,6 +172,15 @@ public class UpgradesUI : MonoBehaviour
             bottomUpgradeText.SetText(upgradeName);
         }
             
+    }
+
+
+    private void setButtonText(TextMeshProUGUI buttonText,int currentStage)
+    {
+        if (currentStage == constants.stage_final)
+            return;
+        string cost = constants.returnUpgradeCost(currentStage).ToString();
+        buttonText.SetText(cost);
     }
 
 

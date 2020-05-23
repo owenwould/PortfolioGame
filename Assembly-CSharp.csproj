@@ -84,8 +84,8 @@
     <Compile Include="Assets\Scripts\Upgrades.cs" />
     <Compile Include="Assets\Scripts\UpgradesUI.cs" />
     <Compile Include="Assets\Scripts\constants.cs" />
+    <Compile Include="Assets\Scripts\distance.cs" />
     <Compile Include="Assets\Scripts\spawnButtons.cs" />
-    <Compile Include="Assets\Scripts\unitUpgradeButtons.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

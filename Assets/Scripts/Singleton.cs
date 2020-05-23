@@ -23,6 +23,10 @@ public class Singleton : MonoBehaviour
     {
         gamemanger.attackBase(isPlayer, damage);
     }
+    public bool canUnitMove(bool isPlayer, long unitID)
+    {
+        return gamemanger.canUnitMove(unitID,isPlayer);
+    }
 
 
 

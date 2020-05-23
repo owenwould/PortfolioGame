@@ -13,6 +13,8 @@ public class SpawnCharacter : MonoBehaviour
     List<int> playerEntityQueue, enemyEntityQueue;
     static bool bPlayerCoroutineRunning,bEnemyCorountineRunning;
     [SerializeField] UIManager uiManager;
+    long unitIDPlayer, unitIDEnemy;
+
     void Start()
     {
        
@@ -20,6 +22,10 @@ public class SpawnCharacter : MonoBehaviour
         bEnemyCorountineRunning = false;
         playerEntityQueue = new List<int>(constants.MAX_UNIT_COUNT);
         enemyEntityQueue = new List<int>(constants.MAX_UNIT_COUNT);
+
+        unitIDEnemy = 1000;
+        unitIDPlayer = 2000;
+
 
     }
 
@@ -35,6 +41,12 @@ public class SpawnCharacter : MonoBehaviour
             checkSpawnEntity(constants.MEDIUM_UNIT_TYPE, true);
         else if (Input.GetKeyUp(KeyCode.Alpha4))
             checkSpawnEntity(constants.HEAVY_UNIT_TYPE, true);
+
+
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            checkSpawnEntity(constants.LIGHT_UNIT_TYPE, false);
+        }
     }
 
     public void spawnUnit(int unitType,bool isPlayer)
@@ -43,13 +55,14 @@ public class SpawnCharacter : MonoBehaviour
     }
     public void GameOver()
     {
-        if (GameManager.gameover)
-        {
-            StopAllCoroutines();
-            playerEntityQueue.Clear();
-            enemyEntityQueue.Clear();
-        }
-      
+        unitIDEnemy = 1000;
+        unitIDPlayer = 2000;
+
+        StopAllCoroutines();
+        playerEntityQueue.Clear();
+        enemyEntityQueue.Clear();
+
+
     }
 
 
@@ -107,34 +120,42 @@ public class SpawnCharacter : MonoBehaviour
 
     void spawnPlayerEntity(int iEntityType,bool isPlayer)
     {
+        UnitTypeStats unitTypeStats = new UnitTypeStats();
         Vector3 pos;
         float targetPos;
         if (isPlayer)
         {
+       
             pos = playerSpawnPointTran.position;
             targetPos = enemySpawnPointTran.position.x;
+            unitTypeStats = upgradesScript.returnPlayerUnitStats(iEntityType);
+        }
+        else if (!isPlayer)
+        {
+           
+            pos= enemySpawnPointTran.position ;
+            targetPos = playerSpawnPointTran.position.x;
+            unitTypeStats = upgradesScript.returnEnemyUnitStats(iEntityType);
         }
         else
         {
-            pos= enemySpawnPointTran.position ;
+            print("XX");
+            pos = enemySpawnPointTran.position;
             targetPos = playerSpawnPointTran.position.x;
         }
 
 
-
+        print(unitTypeStats.getHealth());
         int unitIndex = getUnitIndex(iEntityType);
         GameObject entity = Instantiate(unitObjs[unitIndex], pos, Quaternion.identity);
         Unit unitScript = entity.AddComponent<Unit>();
-        UnitTypeStats unitStats = upgradesScript.unitValues(iEntityType, isPlayer);
-        unitScript.setUnitAttributes(unitStats.getHealth(), unitStats.getMinDamage(), unitStats.getMaxDamage(), unitStats.getDamageDelay(), unitStats.getRange(), unitStats.getSpeed());
-        unitScript.setUnit(targetPos, isPlayer,iEntityType);
+        unitScript.setUnitAttributes(unitTypeStats.getHealth(), unitTypeStats.getMinDamage(), unitTypeStats.getMaxDamage(), unitTypeStats.getDamageDelay(), unitTypeStats.getRange(), unitTypeStats.getSpeed());
+        unitScript.setUnit(targetPos, isPlayer,iEntityType,getID(isPlayer));
         gameManager.addToPlayerArmy(unitScript,isPlayer,entity);
     }
     IEnumerator PlayerQueueCoroutine()
     {
-
-       
-        float fWaitDuration = returnWaitTime(playerEntityQueue);
+        float fWaitDuration = returnWaitTime(playerEntityQueue[0]);
         yield return new WaitForSeconds(fWaitDuration);
         spawnPlayerEntity(playerEntityQueue[0],true);
         playerEntityQueue.RemoveAt(0);
@@ -147,21 +168,24 @@ public class SpawnCharacter : MonoBehaviour
     }
     IEnumerator EnemyQueueCoroutine()
     {
-        float fWaitDuration = returnWaitTime(enemyEntityQueue);
+        float fWaitDuration = returnWaitTime(enemyEntityQueue[0]);
         yield return new WaitForSeconds(fWaitDuration);
         spawnPlayerEntity(enemyEntityQueue[0], false);
         enemyEntityQueue.RemoveAt(0);
 
         if (enemyEntityQueue.Count > 0)
+        {
+            yield return new WaitForSeconds(0.5f);
             StartCoroutine(EnemyQueueCoroutine());
+        }
         else
             bEnemyCorountineRunning = false;
     }
 
-    float returnWaitTime(List<int> list)
+    float returnWaitTime(int iEntityType)
     {
         float fWaitDuration = 0;
-        switch (list[0])
+        switch (iEntityType)
         {
             case constants.LIGHT_UNIT_TYPE:
                 fWaitDuration = constants.LIGHT_UNIT_WAIT;
@@ -174,6 +198,10 @@ public class SpawnCharacter : MonoBehaviour
                 break;
             case constants.HEAVY_UNIT_TYPE:
                 fWaitDuration = constants.HEAVY_UNIT_WAIT;
+                break;
+
+            default:
+                print("Error");
                 break;
         }
 
@@ -217,6 +245,9 @@ public class SpawnCharacter : MonoBehaviour
                     canAfford = true;
                 }
                 break;
+            default:
+                print("Error");
+                    break;
         }
         return canAfford;
     }
@@ -238,13 +269,35 @@ public class SpawnCharacter : MonoBehaviour
             case constants.HEAVY_UNIT_TYPE:
                 unitTag = constants.heavyTag;
                 break;
+            default:
+                print("Error");
+                break;
         }
         for (int i=0; i < unitObjs.Length; i++)
         {
             if (unitObjs[i].CompareTag(unitTag))
                 return i;
         }
-        return -1;
+
+      
+
+        return 0;
+    }
+
+
+    public long getID(bool isPlayer)
+    {
+        if (isPlayer)
+        {
+            unitIDPlayer++;
+            return unitIDPlayer;
+        }
+        else
+        {
+            unitIDEnemy++;
+            return unitIDEnemy;
+        }
+           
     }
 
 

@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void setInitialValues()
     {
-        playerGold = constants.startGoldPlayerEasy;
-        enemyGold = 1200;
+        playerGold = 600000;
+        enemyGold = 6000000;
         unitCountPlayer = 0;
         unitCountEnemy = 0;
     }
@@ -225,16 +225,16 @@ public class GameManager : MonoBehaviour
       
     }
    
-    void updateUnitCountUI(int size)
+    private void updateUnitCountUI(int size)
     {
         uiManager.setUnitCount(size);
     }
-    void updateGoldCountUI(int goldValue)
+    private void updateGoldCountUI(int goldValue)
     {
         uiManager.setGoldValue(goldValue);
     }
 
-    int enemyDeathReward(int iType)
+    private int enemyDeathReward(int iType)
     {
         int reward = 0;
         switch(iType)
@@ -307,6 +307,72 @@ public class GameManager : MonoBehaviour
     {
         musicManager.stopMusic();
     }
+
+    public bool canUnitMove(long unitID, bool isPlayer)
+    {
+        bool result;
+        if (isPlayer)
+            result = checkUnitPosition(playerArmy, unitID);
+        else
+            result = checkUnitPosition(enemyArmy, unitID);
+      
+        return result;
+    }
+
+
+    private bool checkUnitPosition(List<Unit> unitList,long unitID)
+    {
+        if (unitList.Count > 0)
+        {
+            if (unitList.Count < 2)
+            {
+                return true;
+            }
+            else
+            {
+                for (int i = 0; i < unitList.Count; i++)
+                {
+                    if (unitID == unitList[i].getUnitID())
+                    {
+                        int secondIndex = 1;
+                        if (i == 0)
+                            return true;
+                        else
+                            secondIndex = i - 1;
+
+                        return checkDistance(i, secondIndex, unitList);
+                    }
+                }
+
+            }
+
+        }
+        return true;
+
+
+    }
+
+
+
+    private bool checkDistance(int indexOne, int indexTwo, List<Unit> unitList)
+    {
+        bool canMove = true;
+
+
+        if (unitList.Count < 2)
+            return true;
+        float pos1 = unitList[indexOne].getXPosition();
+        float pos2 = unitList[indexTwo].getXPosition();
+        canMove = distance.isntTooClose(pos1, pos2);
+        return canMove;
+
+    }
+
+
+
+
+
+
 
    
 

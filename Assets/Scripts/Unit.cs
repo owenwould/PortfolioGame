@@ -12,28 +12,48 @@ public class Unit : MonoBehaviour
     private bool isAttacking = false;
     private int health,minDamage,maxDamage,range,speed;
     private float damageDelay;
-   
+    private int friendlyRaycastRange;
+    Transform unitTransform;
   
     private int entityType;
     private Animator anim;
+    private bool isRangedUnit,friendlyInFront,enemyInFront;
+    private Vector3 origin, dir;
+    private bool canMove;
+    private long unitID;
+    Vector3 healthBarVec;
+    Transform healthBar;
+    float onePercent;
+
 
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        origin = new Vector3(0, 0, 0);
+        dir = new Vector3(0, 0, 0);
+        unitTransform = GetComponent<Transform>();
+        setHealthBar();
        
     }
 
-
-
-
-    public void setUnit(float targetX,bool isPlayer,int type)
+    public void setUnit(float targetX,bool isPlayer,int type,long unitID)
     {
+        enabledUnit = true;
         setType(isPlayer);
         this.isPlayer = isPlayer;
         entityType = type;
         targetVec = new Vector3(targetX, transform.position.y, transform.position.z);
         anim.SetBool(constants.isAttacking, false);
+
+        if (entityType == constants.RANGED_UNIT_TYPE)
+            isRangedUnit = true;
+        else
+            isRangedUnit = false;
+
+        this.unitID = unitID;
+        StartCoroutine(wait());
+        healthBar.localScale = healthBarVec;
 
     }
     public void setUnitAttributes(int health, int minDamage,int maxDamage ,float damageDelay, int range, int speed)
@@ -44,7 +64,10 @@ public class Unit : MonoBehaviour
         this.damageDelay = damageDelay;
         this.range = range;
         this.speed = speed;
-        StartCoroutine(wait());
+        friendlyRaycastRange = constants.firendlyDetectionRange;
+        canMove = false;
+
+        onePercent = (float)(constants.healthBarConstant / (float)health);
     }
 
 
@@ -63,6 +86,42 @@ public class Unit : MonoBehaviour
         if (detectEnemy())
         {
             anim.SetBool(constants.isAttacking, true);
+            if (isRangedUnit)
+            {
+                //Prevents  other units being help up when archer gets into range of base to attack 
+                if (!canMove)
+                    return;
+
+
+                enemyInFront = false;
+                friendlyInFront = false;
+                //Check if friendly is in front & check if enemy is in front 
+                origin = unitTransform.position;
+                dir = -unitTransform.right;
+
+                Ray ray = new Ray(origin, dir);
+                if (Physics.Raycast(ray, out RaycastHit hitE, friendlyRaycastRange, enemyMask))
+                {
+                    enemyInFront = true;
+                }
+
+                if (Physics.Raycast(ray, out RaycastHit hitF, friendlyRaycastRange, friendlyMask))
+                {
+                    if (!hitF.collider.CompareTag(constants.baseTag))
+
+                        friendlyInFront = true;
+                }
+
+                if (!friendlyInFront && !enemyInFront)
+                {
+                    anim.SetBool(constants.isRunning, true);
+                    float step = (float)speed * Time.deltaTime;
+                    unitTransform.position = Vector3.MoveTowards(transform.position, targetVec, step);
+                    return;
+                }
+            }
+
+         
             return;
         }
         else if  (detectFriendly())
@@ -72,21 +131,28 @@ public class Unit : MonoBehaviour
         }
         else
         {
+            if (!canMove)
+                return;
+
             anim.SetBool(constants.isRunning, true);
             float step = (float) speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetVec, step);
+            unitTransform.position = Vector3.MoveTowards(transform.position, targetVec, step);
         }
+
+
+
+
+
 
     }
 
     private bool detectEnemy()
     {
-        
-        Vector3 origin = transform.position;
-        //Note that player is rotated for animation therefore both raycasts are -right
-        Vector3 dir = -transform.right; 
-       
 
+        origin = unitTransform.position;
+        //Note that player is rotated for animation therefore both raycasts are -right
+        dir = -unitTransform.right; 
+       
 
         Debug.DrawRay(origin, dir * 2, Color.red);
 
@@ -118,13 +184,10 @@ public class Unit : MonoBehaviour
 
     private bool detectFriendly()
     {
-        Vector3 origin = transform.position;
-        Vector3 dir = -transform.right;
-        
-
-        //Debug.DrawRay(origin, dir * 2, Color.red);
+        origin = unitTransform.position;
+        dir = -unitTransform.right;
         Ray ray = new Ray(origin, dir);
-        if (Physics.Raycast(ray, out RaycastHit hit, 2, friendlyMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, friendlyRaycastRange, friendlyMask))
         {
             if (!hit.collider.CompareTag(constants.baseTag))
                 return true;
@@ -160,11 +223,17 @@ public class Unit : MonoBehaviour
         health -= damage;
         if (health < 1)
         {
-            Singleton.instance.removeUnit(isPlayer,entityType);
+            Singleton.instance.removeUnit(isPlayer, entityType);
             destroyUnit();
         }
+        else
+            alterHealthBar();
     }
-
+    private void alterHealthBar()
+    {
+        healthBarVec.x = (float)health * onePercent;
+        healthBar.localScale = healthBarVec;
+    }
 
     private IEnumerator attackAction()
     {
@@ -208,7 +277,7 @@ public class Unit : MonoBehaviour
 
     public float getXPosition()
     {
-        return transform.position.x;
+        return unitTransform.position.x;
     }
     public bool getIsAttacking()
     {
@@ -227,8 +296,32 @@ public class Unit : MonoBehaviour
 
     IEnumerator wait()
     {
-        enabledUnit = false;
-        yield return new WaitForSeconds(0.2f);
-        enabledUnit = true;
+     //Prevents Unit getting such on each other when spawned in quick sucession and when the enemy has pressed the 
+     //Player to their base (can still attack just cant move), prevents them going in front of units that were spawned before
+        yield return new WaitForSeconds(0.1f);
+
+        bool tempCanMove = Singleton.instance.canUnitMove(isPlayer, unitID);
+        if (tempCanMove)
+            canMove = true;
+        else
+            StartCoroutine(wait());
+    }
+
+
+    public long getUnitID()
+    {
+        return unitID;
+    }
+
+    private void setHealthBar()
+    {
+        foreach (Transform child  in transform)
+        {
+            if (child.gameObject.CompareTag(constants.healthBarTag))
+            {
+                healthBar = child;
+                healthBarVec = healthBar.localScale;
+            }
+        }
     }
 }

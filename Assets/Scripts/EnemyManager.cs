@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyManager : MonoBehaviour
 {
 
@@ -13,29 +14,34 @@ public class EnemyManager : MonoBehaviour
     float spawnXPos;
     int waitTime = 3;
     bool canSpawnAll;
-    public bool enemyActive;
+    public bool enemyActive,upgradesComplete;
+    List<int> upgradeListOrder;
 
     private void Start()
     {
         canSpawnAll = false;
         spawnXPos = spawnTran.position.x;
-       
+        upgradesComplete = false;
     }
 
 
     public void begin()
     {
+
         if (enemyActive)
         {
             canSpawnAll = false;
             StartCoroutine(timeCanSpawnAllUnits());
             StartCoroutine(aiReponseDelay());
+
+            upgradeListOrder = new List<int>();
+            setUpgradeList();
+            upgradesComplete = false;
+
         }
     }
 
-    //Check money
-    //Spawn
-    //Repeat 
+  
 
     private int returnGoldQuantity()
     {
@@ -66,12 +72,25 @@ public class EnemyManager : MonoBehaviour
         if (!canBuyUnit(unitCount, gold))
             return;
 
-        if (unitCount < 3)
-            chooseUnit(gold);
-        else
+      
+       
+        /*
+        if (!upgradesComplete)
         {
-            makeEducatedDecision(gold);
+            if (unitCount < 7)
+                chooseUnit(gold);
+            else
+            {
+              //  makeEducatedDecision(gold);
+            }
         }
+        else
+            chooseUnit(gold);
+
+       */
+     
+        upgradeAction(gold);
+    
     }
 
 
@@ -89,6 +108,7 @@ public class EnemyManager : MonoBehaviour
     {
         int distance = returnDistance(manager.returnLinearPosition());
         bool isAttacking = returnIsAttacking();
+
        
         int action = 0;
         if (isAttacking)
@@ -101,6 +121,10 @@ public class EnemyManager : MonoBehaviour
                 action = 20;
             else if (distance > 60)
                 action = 30;
+            else
+            {
+                print("Errir");
+            }
         }
         else
         {
@@ -112,8 +136,13 @@ public class EnemyManager : MonoBehaviour
                 action = 20;
             else if (distance > 60)
                 action = 40;
+            else
+            {
+                print("Errir");
+            }
         }
-
+        
+        //print(action + "d " + distance);
         return action;
     }
 
@@ -121,35 +150,51 @@ public class EnemyManager : MonoBehaviour
     private int considerPlayerHealth()
     {
         int playerHealth = returnPlayerBaseHealth();
+        int playerHealthPercentage = (playerHealth / constants.BASE_HEALTH) * 100;
 
         int action = 0;
-        if (playerHealth > 0 && playerHealth < 31)
+        if (playerHealthPercentage > 0 && playerHealthPercentage < 31)
             action = 40;
-        else if (playerHealth > 30 && playerHealth < 51)
+        else if (playerHealthPercentage > 30 && playerHealthPercentage < 51)
             action = 20;
-        else if (playerHealth > 50 && playerHealth < 81)
+        else if (playerHealthPercentage > 50 && playerHealthPercentage < 81)
             action = 20;
-        else if (playerHealth > 80 && playerHealth < 101)
+        else if (playerHealthPercentage > 80 && playerHealthPercentage < 101)
            action =30;
+        else
+        {
+            print(playerHealthPercentage);
+            print("Error");
+        }
+
+       // print(action + "h " + playerHealthPercentage);
        
         return action;
     }
     private void finalDecision(int healthAspect, int distanceAspect,int gold)
     {
-        
+       
         int action = healthAspect + distanceAspect;
-
-        if (action > 0 && action < 51)
-        {
-          
-            return;
-        }
-        else if (action > 50 && action < 101)
-        {
-            print("Spawn");
-            chooseUnit(gold);
-        }
       
+        if (!upgradesComplete)
+        {
+            if (action > 0 && action < 51)
+            {
+                //print("up");
+                //upgradeAction(gold);
+                return;
+            }
+            else if (action > 50 && action < 101)
+            {
+                //print("Spawn");
+                chooseUnit(gold);
+            }
+        }
+        else
+            chooseUnit(gold);
+
+
+
     }
 
 
@@ -162,13 +207,14 @@ public class EnemyManager : MonoBehaviour
             unitRange = unitPoolRange(gold, true);
 
 
-        int unitType = returnUnitType(unitRange);
-        spawner.spawnUnit(unitType, false);
+
+        //int unitType = returnUnitType(unitRange);
+        spawner.spawnUnit(constants.LIGHT_UNIT_TYPE, false);
     }
 
     IEnumerator aiReponseDelay()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(waitTime);
         takeAction();
         StartCoroutine(aiReponseDelay());
 
@@ -176,10 +222,8 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator timeCanSpawnAllUnits()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(1);
         canSpawnAll = true;
-        
-
     }
 
     private int returnUnitType(int unitRange)
@@ -199,6 +243,9 @@ public class EnemyManager : MonoBehaviour
             case 4:
                 max = constants.HEAVY_RANDOM_MAX;
                 break;
+            default:
+                print("Error");
+                break;
         }
 
         return decideUnit(max);
@@ -215,15 +262,15 @@ public class EnemyManager : MonoBehaviour
         int random = Random.Range(0, max);
         int unitType = 1;
 
-        if (random >= 0 && random < constants.LIGHT_RANDOM_MAX)
+        if (random >= 0 && random < constants.LIGHT_RANDOM_MAX) 
         {
             unitType = constants.LIGHT_UNIT_TYPE;
         }
-        else if (random >= constants.LIGHT_RANDOM_MAX && random < constants.RANGED_RANDOM_MAX)
+        else if (random >= constants.LIGHT_RANDOM_MAX && random < constants.RANGED_RANDOM_MAX) 
         {
             unitType = constants.RANGED_UNIT_TYPE;
         }
-        else if (random >= constants.RANGED_RANDOM_MAX && random < constants.MEDIUM_UNIT_COST)
+        else if (random >= constants.RANGED_RANDOM_MAX && random < constants.MEDIUM_RANDOM_MAX)
         {
             unitType = constants.MEDIUM_UNIT_TYPE;
         }
@@ -231,6 +278,8 @@ public class EnemyManager : MonoBehaviour
         {
             unitType = constants.HEAVY_UNIT_TYPE;
         }
+       
+     
         return unitType;
     }
 
@@ -260,6 +309,10 @@ public class EnemyManager : MonoBehaviour
             else
                 unitsAvailiableToSpawn = 2;
         }
+        else
+        {
+            print("Error");
+        }
 
         return unitsAvailiableToSpawn;
     }
@@ -281,9 +334,131 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    private void upgrade()
+    private void upgradeAction(int gold)
     {
+        decideUpgrade(gold);
+    }
 
+
+
+
+   private void decideUpgrade(int gold)
+   {
+
+        print("X");
+        if (gold < constants.firstUpgradeCost)
+            return;
+        
+        if (upgradeScript.checkEntireUpgradeState(constants.initialStage))
+        {
+            for (int i = 0; i < upgradeListOrder.Count; i++)
+            {
+                //Check for initial states
+                if (upgradeScript.checkEnemyUpgradeState(constants.initialStage, upgradeListOrder[i]))
+                {
+                    //Upgrade that attribute 
+                    int[] upgrade = constants.retrurnUpgradeKeyComponent(upgradeListOrder[i]);
+                    int unitType = upgrade[0];
+                    int attributeType = upgrade[1];
+                    upgradeScript.enemyUpgrade(upgradeListOrder[i], attributeType, unitType, constants.initialStage,constants.firstUpgradeCost);
+                    return;
+                }
+
+            }
+        }
+
+        
+        if (gold < constants.secondUpgradeCost)
+            return;
+
+
+        if (upgradeScript.checkEntireUpgradeState(constants.stage_one))
+        {
+            for (int j = 0; j < upgradeListOrder.Count; j++)
+            {
+                //Check for first upgrades 
+                if (upgradeScript.checkEnemyUpgradeState(constants.stage_one, upgradeListOrder[j]))
+                {
+                    int[] upgrade = constants.retrurnUpgradeKeyComponent(upgradeListOrder[j]);
+                    int unitType = upgrade[0];
+                    int attributeType = upgrade[1];
+                    upgradeScript.enemyUpgrade(upgradeListOrder[j], attributeType, unitType, constants.stage_one, constants.secondUpgradeCost);
+                    return;
+                }
+            }
+        }
+
+        if (gold < constants.finalUpgradeCost)
+            return;
+
+
+        if (upgradeScript.checkEntireUpgradeState(constants.stage_two))
+        {
+
+            for (int k = 0; k < upgradeListOrder.Count; k++)
+            {
+                //Check for second upgrades 
+                if (upgradeScript.checkEnemyUpgradeState(constants.stage_two, upgradeListOrder[k]))
+                {
+                    int[] upgrade = constants.retrurnUpgradeKeyComponent(upgradeListOrder[k]);
+                    int unitType = upgrade[0];
+                    int attributeType = upgrade[1];
+                    upgradeScript.enemyUpgrade(upgradeListOrder[k], attributeType, unitType, constants.stage_two, constants.finalUpgradeCost);
+                    return;
+                }
+            }
+        }
+        else
+        {
+            upgradesComplete = true;
+            return;
+        }
+        
+         
+   }
+
+   
+
+
+    private void setUpgradeList()
+    {
+       
+        upgradeListOrder.Add(constants.lightHealthKey);
+        upgradeListOrder.Add(constants.lightDamageKey);
+        upgradeListOrder.Add(constants.mediumSpeedKey);
+        upgradeListOrder.Add(constants.mediumDamageKey);
+        upgradeListOrder.Add(constants.rangeDamageKey);
+        upgradeListOrder.Add(constants.rangeRangeKey);
+        upgradeListOrder.Add(constants.heavyHealthKey);
+        upgradeListOrder.Add(constants.heavyDamageKey);
+        //Randomise order each game
+        upgradeListOrder.Shuffle();
+    }
+
+
+   
+
+
+
+}
+
+public static class IListExtensions
+{
+    //Code Taken from https://forum.unity.com/threads/clever-way-to-shuffle-a-list-t-in-one-line-of-c-code.241052/
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
     }
 }
 

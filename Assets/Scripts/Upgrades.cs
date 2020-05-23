@@ -7,11 +7,16 @@ public class Upgrades : MonoBehaviour
     private Dictionary<int,UnitTypeStats> playerUnitStats;
     private Dictionary<int, UnitTypeStats> enemyUnitStats;
     [SerializeField] GameManager managerScript;
+    Dictionary<int, int> EnemyUpgradeState;
+    Dictionary<int, int> PlayerUpgradeState;
     
     public void begin()
     {
         playerUnitStats = new Dictionary<int, UnitTypeStats>();
         enemyUnitStats = new Dictionary<int, UnitTypeStats>();
+
+        EnemyUpgradeState = new Dictionary<int, int>();
+        PlayerUpgradeState = new Dictionary<int, int>();
         setUnitStats();
     }
 
@@ -22,6 +27,10 @@ public class Upgrades : MonoBehaviour
         setRangedUnit();
         setMediumUnit();
         setHeavyUnit();
+        setEnemyUpgrades();
+        setPlayerUpgrades();
+
+
     }
 
 
@@ -31,200 +40,315 @@ public class Upgrades : MonoBehaviour
         UnitTypeStats light = new UnitTypeStats(constants.LIGHT_HEALTH,
             constants.LIGHT_MIN_DAMAGE,constants.LIGHT_MAX_DAMAGE, constants.LIGHT_DAMAGE_DELAY,
             constants.LIGHT_RANGE, constants.LIGHT_SPEED);
+
+        UnitTypeStats lightEnemy = new UnitTypeStats(constants.LIGHT_HEALTH,
+            constants.LIGHT_MIN_DAMAGE, constants.LIGHT_MAX_DAMAGE, constants.LIGHT_DAMAGE_DELAY,
+            constants.LIGHT_RANGE, constants.LIGHT_SPEED);
+
         playerUnitStats.Add(constants.LIGHT_UNIT_TYPE, light);
-        enemyUnitStats.Add(constants.LIGHT_UNIT_TYPE, light);
+        enemyUnitStats.Add(constants.LIGHT_UNIT_TYPE, lightEnemy);
     } 
 
     private void setRangedUnit()
     {
         UnitTypeStats range = new UnitTypeStats(constants.RANGED_HEALTH,constants.RANGED_MIN_DAMAGE,
             constants.RANGED_MAX_DAMAGE,constants.RANGED_DAMAGE_DELAY,constants.RANGED_RANGE,constants.RANGED_SPEED);
+
+        UnitTypeStats rangeEnemy = new UnitTypeStats(constants.RANGED_HEALTH, constants.RANGED_MIN_DAMAGE,
+            constants.RANGED_MAX_DAMAGE, constants.RANGED_DAMAGE_DELAY, constants.RANGED_RANGE, constants.RANGED_SPEED);
         playerUnitStats.Add(constants.RANGED_UNIT_TYPE, range);
-        enemyUnitStats.Add(constants.RANGED_UNIT_TYPE, range);
+        enemyUnitStats.Add(constants.RANGED_UNIT_TYPE, rangeEnemy);
     }
 
     private void setMediumUnit()
     {
         UnitTypeStats medium = new UnitTypeStats(constants.MEDIUM_HEALTH, constants.MEDIUM_MIN_DAMAGE,
            constants.MEDIUM_MAX_DAMAGE, constants.MEDIUM_DAMAGE_DELAY, constants.MEDIUM_RANGE, constants.MEDIUM_SPEED);
+
+        UnitTypeStats mediumEnemy = new UnitTypeStats(constants.MEDIUM_HEALTH, constants.MEDIUM_MIN_DAMAGE,
+           constants.MEDIUM_MAX_DAMAGE, constants.MEDIUM_DAMAGE_DELAY, constants.MEDIUM_RANGE, constants.MEDIUM_SPEED);
         playerUnitStats.Add(constants.MEDIUM_UNIT_TYPE, medium);
-        enemyUnitStats.Add(constants.MEDIUM_UNIT_TYPE, medium);
+        enemyUnitStats.Add(constants.MEDIUM_UNIT_TYPE, mediumEnemy);
     }
     private void setHeavyUnit()
     {
+        //Never use the same object in both dictionaries - 
         UnitTypeStats heavy = new UnitTypeStats(constants.HEAVY_HEALTH, constants.HEAVY_MIN_DAMAGE,
               constants.HEAVY_MAX_DAMAGE, constants.HEAVY_DAMAGE_DELAY, constants.HEAVY_RANGE, constants.HEAVY_SPEED);
+
+        UnitTypeStats heavyEnemy = new UnitTypeStats(constants.HEAVY_HEALTH, constants.HEAVY_MIN_DAMAGE,
+              constants.HEAVY_MAX_DAMAGE, constants.HEAVY_DAMAGE_DELAY, constants.HEAVY_RANGE, constants.HEAVY_SPEED);
         playerUnitStats.Add(constants.HEAVY_UNIT_TYPE, heavy);
-        enemyUnitStats.Add(constants.HEAVY_UNIT_TYPE, heavy);
+       enemyUnitStats.Add(constants.HEAVY_UNIT_TYPE, heavyEnemy);
     }
 
 
 
-    public UnitTypeStats unitValues(int iEntityType, bool isPlayer)
+  
+
+
+
+    public UnitTypeStats returnPlayerUnitStats(int unitType)
     {
-        if (isPlayer)
+
+        if (playerUnitStats.ContainsKey(unitType))
         {
-            if (playerUnitStats.ContainsKey(iEntityType))
-                return playerUnitStats[iEntityType];
+            return playerUnitStats[unitType];
         }
         else
         {
-            if (enemyUnitStats.ContainsKey(iEntityType))
-                return enemyUnitStats[iEntityType];
+            print("Error");
+            return null;
         }
 
-        return null;
+
+    }
+
+    public UnitTypeStats returnEnemyUnitStats(int unitType)
+    {
+        print(unitType);
+        if (enemyUnitStats.ContainsKey(unitType))
+        {
+            return enemyUnitStats[unitType];
+        }
+        else
+        {
+            print("Error");
+            return null;
+        }
     }
 
 
 
-    public int returnCurrentProgress(int unitType,int attributeType)
+    public int returnCurrentProgress(int upgradeKey)
     {
-        int currentValue = returnCurrentAttributeValue(true, unitType, attributeType);
-        int stage = constants.returnUpgradeStage(currentValue, attributeType, unitType);
+        int stage = getPlayerUpgradeStage(upgradeKey);
         return stage;
     }
 
 
-  
-    public bool upgradeAttribute(bool isPlayer, int unitType, int attributeType)
-    {
-        int currentValue = returnCurrentAttributeValue(isPlayer, unitType, attributeType);
-        int currentStage = constants.returnUpgradeStage(currentValue, attributeType, unitType);
-      
 
-        switch (currentStage)
+    public bool upgradePlayerAttribute(int upgradeKey,int unitType,int attributeType)
+    {
+        int currentStage = getPlayerUpgradeStage(upgradeKey);
+        if (!(currentStage == constants.stage_final))
         {
-            case constants.initialStage:
-               return upgrade(constants.firstUpgradeCost, isPlayer, attributeType, unitType,currentStage);
-               
-            case constants.stage_one:
-                return upgrade(constants.secondUpgradeCost, isPlayer, attributeType, unitType,currentStage);
-             
-            case constants.stage_two:
-                return upgrade(constants.finalUpgradeCost, isPlayer, attributeType, unitType,currentStage);
-               
-            case constants.stage_final:
-                return false;      
+            int cost = constants.returnUpgradeCost(currentStage);
+            bool result = upgradePlayerUnit(cost, attributeType, unitType, currentStage,upgradeKey);
+            return result;
         }
         return false;
+
     }
 
-
-
-    private  bool upgrade(int cost, bool isPlayer,int attributeType, int unitType,int currentStage)
+    private bool upgradePlayerUnit(int cost,int attributeType,int unitType,int currentStage,int upgradeKey)
     {
-        int currentGold;
-        if (isPlayer)
-            currentGold = managerScript.getPlayerGold();
-        else
-            currentGold = managerScript.getEnemyGold();
-
-        int initialAttributeVal = constants.returnInitialValue(unitType, attributeType);
-        int newValue = constants.returnNewValue(initialAttributeVal, currentStage);
-
+        int currentGold = managerScript.getPlayerGold();
         if (currentGold < cost)
             return false;
-        else
-        {
-           
-            if (isPlayer)
-            {
-                upgradeStat(playerUnitStats, attributeType, unitType, newValue,currentStage);
-                managerScript.decreaseGold(cost, true);
-            }
-            else
-            {
-                upgradeStat(enemyUnitStats, attributeType, unitType, newValue,currentStage);
-                managerScript.decreaseGold(cost, false);
-            }
-            return true;
-        } 
+
+
+        int initialValue = constants.returnInitialValue(unitType, attributeType);
+        int newValue = constants.returnNewValue(initialValue, currentStage);
+        managerScript.decreaseGold(cost, true);
+        upgradePlayerUnitStat(attributeType, unitType, newValue, currentStage);
+        //Update Upgrade Dictionary
+        setPlayerUpgradeState(upgradeKey, currentStage);
+        return true;
     }
 
-    private void upgradeStat(Dictionary<int,UnitTypeStats> unitList,int attributeType,int unitType, int newValue,int stage)
+    private void upgradePlayerUnitStat(int attributeType,int unitType,int newValue,int stage)
     {
-
-        if (unitList.ContainsKey(unitType))
+        if (playerUnitStats.ContainsKey(unitType))
         {
             switch (attributeType)
             {
                 case constants.attribute_tpye_health:
-                    unitList[unitType].setHealth(newValue);
+                    playerUnitStats[unitType].setHealth(newValue);
                     break;
                 case constants.attribute_type_damage:
-                    unitList[unitType].setMinDamage(newValue);
+                    playerUnitStats[unitType].setMinDamage(newValue);
                     int maxDamage = constants.returnNewValue(constants.returnInitialMaxDamage(unitType), stage);
-                    unitList[unitType].setMaxDamage(maxDamage);
+                    playerUnitStats[unitType].setMaxDamage(maxDamage);
                     break;
                 case constants.attribute_type_range:
-                    unitList[unitType].setRange(newValue);
+                    playerUnitStats[unitType].setRange(newValue);
                     break;
                 case constants.attribute_type_speed:
-                    unitList[unitType].setSpeed(newValue);
+                    playerUnitStats[unitType].setSpeed(newValue);
+                    break;
+                default:
+                    print("Error");
                     break;
             }
+        }
+    }
+    private void upgradeEnemyUnitStats(int attributeType,int unitType, int newValue,int stage)
+    {
+        if (enemyUnitStats.ContainsKey(unitType))
+        {
+            switch (attributeType)
+            {
+                case constants.attribute_tpye_health:
+                    enemyUnitStats[unitType].setHealth(newValue);
+                    break;
+                case constants.attribute_type_damage:
+                    enemyUnitStats[unitType].setMinDamage(newValue);
+                    int maxDamage = constants.returnNewValue(constants.returnInitialMaxDamage(unitType), stage);
+                    enemyUnitStats[unitType].setMaxDamage(maxDamage);
+                    break;
+                case constants.attribute_type_range:
+                    enemyUnitStats[unitType].setRange(newValue);
+                    break;
+                case constants.attribute_type_speed:
+                    enemyUnitStats[unitType].setSpeed(newValue);
+                    break;
+                default:
+                    print("Error");
+                    break;
+            }
+        }
 
+
+
+    }
+
+
+    public void enemyUpgrade(int upgradeKey, int attributeType,int unitType,int stage,int cost)
+    {
+        //Enemy checks cost in previous function so there will be enough
+
+        int initialValue = constants.returnInitialValue(unitType, attributeType);
+        int newValue = constants.returnNewValue(initialValue, stage);
+        managerScript.decreaseGold(cost, true);
+        upgradeEnemyUnitStats(attributeType, unitType, newValue, stage);
+
+        //Update Upgrade Dictionary
+        setEnemyUpgradeState(upgradeKey);
+
+
+    }
+
+    private void setEnemyUpgrades()
+    {
+        int initialState = constants.initialStage;
+        EnemyUpgradeState.Add(constants.lightHealthKey,initialState);
+        EnemyUpgradeState.Add(constants.lightDamageKey, initialState);
+        EnemyUpgradeState.Add(constants.mediumSpeedKey, initialState);
+        EnemyUpgradeState.Add(constants.mediumDamageKey, initialState);
+        EnemyUpgradeState.Add(constants.rangeDamageKey, initialState);
+        EnemyUpgradeState.Add(constants.rangeRangeKey, initialState);
+        EnemyUpgradeState.Add(constants.heavyHealthKey, initialState);
+        EnemyUpgradeState.Add(constants.heavyDamageKey, initialState);
+    }
+
+    private void setEnemyUpgradeState(int upgradeKey)
+    {
+        if (EnemyUpgradeState.ContainsKey(upgradeKey))
+        {
+            int currentStage = EnemyUpgradeState[upgradeKey];
+            switch (currentStage)
+            {
+                case constants.initialStage:
+                    EnemyUpgradeState[upgradeKey] = constants.stage_one;
+                    break;
+                case constants.stage_one:
+                    EnemyUpgradeState[upgradeKey] = constants.stage_two;
+                    break;
+                case constants.stage_two:
+                    EnemyUpgradeState[upgradeKey] = constants.stage_final;
+                    break;
+            }
         }
         else
+            print("Dictionary Key error");
+    }
+
+    private void setPlayerUpgradeState(int upgradeKey,int currentStage)
+    {
+        if (PlayerUpgradeState.ContainsKey(upgradeKey))
+        {
+          
+            switch (currentStage)
+            {
+                case constants.initialStage:
+                    PlayerUpgradeState[upgradeKey] = constants.stage_one;
+                    break;
+                case constants.stage_one:
+                    PlayerUpgradeState[upgradeKey] = constants.stage_two;
+                    break;
+                case constants.stage_two:
+                    PlayerUpgradeState[upgradeKey] = constants.stage_final;
+                    break;
+            }
+        }
+        else
+            print("Dictionary Key error");
+    }
+
+
+    public bool checkEnemyUpgradeState(int state, int upgradeKey)
+    {
+        if (EnemyUpgradeState.ContainsKey(upgradeKey))
+        {
+            if (EnemyUpgradeState[upgradeKey] == state)
+                return true;
+            else
+                return false;
+        }
+        else
+        {
             print("Error");
+        }
+
+       
+        return false;
+    }
+
+    public bool checkEntireUpgradeState(int state)
+    {
+        if (EnemyUpgradeState.ContainsValue(state))
+            return true;
+        else
+            return false;
+        
     }
 
 
-
-    private int returnCurrentAttributeValue(bool isPlayer, int unitType,int attributeType)
+    private void setPlayerUpgrades()
     {
-        if (isPlayer)
+        int initialState = constants.initialStage;
+        PlayerUpgradeState.Add(constants.lightHealthKey, initialState);
+        PlayerUpgradeState.Add(constants.lightDamageKey, initialState);
+        PlayerUpgradeState.Add(constants.mediumSpeedKey, initialState);
+        PlayerUpgradeState.Add(constants.mediumDamageKey, initialState);
+        PlayerUpgradeState.Add(constants.rangeDamageKey, initialState);
+        PlayerUpgradeState.Add(constants.rangeRangeKey, initialState);
+        PlayerUpgradeState.Add(constants.heavyHealthKey, initialState);
+        PlayerUpgradeState.Add(constants.heavyDamageKey, initialState);
+    }
+
+
+    private int getPlayerUpgradeStage(int upgradeKey)
+    {
+        if (PlayerUpgradeState.ContainsKey(upgradeKey))
         {
-            return getAttributeValue(playerUnitStats, attributeType, unitType);
+            return PlayerUpgradeState[upgradeKey];
         }
         else
         {
-            return getAttributeValue(enemyUnitStats, attributeType, unitType);
+            print(upgradeKey);
+            print("Error Missing Key ");
+            return -1;
         }
     }
 
-
-    private int getAttributeValue(Dictionary<int,UnitTypeStats> unitList, int attributeType, int unitType)
-    {
-        if (unitList.ContainsKey(unitType)) {
-
-            if (attributeType == constants.attribute_tpye_health)
-            {
-                return unitList[unitType].getHealth();
-            }
-            else if (attributeType == constants.attribute_type_damage)
-            {
-                return unitList[unitType].getMinDamage();
-            }
-            else if (attributeType == constants.attribute_type_range)
-            {
-                return unitList[unitType].getRange();
-            }
-            else if (attributeType == constants.attribute_type_speed)
-            {
-                return unitList[unitType].getSpeed();
-            }
-        }
-        else
-        {
-            print("Error");
-        }
-        return 0;
-    }
-
-
-    public void enemyUpgrade(int gold)
-    {
-        //Check if any unit can be upgraded 
+ 
 
 
 
 
 
 
-    }
 
-
-    
 }

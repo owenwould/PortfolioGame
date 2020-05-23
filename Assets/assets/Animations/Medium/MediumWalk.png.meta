@@ -174,10 +174,10 @@ TextureImporter:
       name: MediumWalk_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 2557
-        width: 285
-        height: 380
+        x: 51
+        y: 2574
+        width: 287
+        height: 378
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,9 +195,9 @@ TextureImporter:
       name: MediumWalk_1
       rect:
         serializedVersion: 2
-        x: 701
-        y: 2557
-        width: 277
+        x: 622
+        y: 2570
+        width: 275
         height: 381
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,8 +216,8 @@ TextureImporter:
       name: MediumWalk_2
       rect:
         serializedVersion: 2
-        x: 1290
-        y: 2558
+        x: 1237
+        y: 2572
         width: 265
         height: 379
       alignment: 0
@@ -237,10 +237,10 @@ TextureImporter:
       name: MediumWalk_3
       rect:
         serializedVersion: 2
-        x: 1965
-        y: 2557
-        width: 261
-        height: 379
+        x: 1901
+        y: 2573
+        width: 262
+        height: 378
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,9 +258,9 @@ TextureImporter:
       name: MediumWalk_4
       rect:
         serializedVersion: 2
-        x: 2557
-        y: 2558
-        width: 269
+        x: 2462
+        y: 2572
+        width: 268
         height: 380
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -279,9 +279,9 @@ TextureImporter:
       name: MediumWalk_5
       rect:
         serializedVersion: 2
-        x: 119
-        y: 2012
-        width: 274
+        x: 63
+        y: 2019
+        width: 275
         height: 381
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -300,10 +300,10 @@ TextureImporter:
       name: MediumWalk_6
       rect:
         serializedVersion: 2
-        x: 702
-        y: 2012
-        width: 280
-        height: 381
+        x: 619
+        y: 2019
+        width: 278
+        height: 382
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,9 +321,9 @@ TextureImporter:
       name: MediumWalk_7
       rect:
         serializedVersion: 2
-        x: 1270
-        y: 2011
-        width: 283
+        x: 1217
+        y: 2018
+        width: 284
         height: 382
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -342,9 +342,9 @@ TextureImporter:
       name: MediumWalk_8
       rect:
         serializedVersion: 2
-        x: 1931
-        y: 2011
-        width: 295
+        x: 1867
+        y: 2018
+        width: 296
         height: 382
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -363,9 +363,9 @@ TextureImporter:
       name: MediumWalk_9
       rect:
         serializedVersion: 2
-        x: 2513
-        y: 2012
-        width: 313
+        x: 2441
+        y: 2019
+        width: 312
         height: 381
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -384,10 +384,10 @@ TextureImporter:
       name: MediumWalk_10
       rect:
         serializedVersion: 2
-        x: 67
-        y: 1499
+        x: 64
+        y: 1403
         width: 326
-        height: 380
+        height: 379
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,10 +405,10 @@ TextureImporter:
       name: MediumWalk_11
       rect:
         serializedVersion: 2
-        x: 701
-        y: 1502
-        width: 337
-        height: 377
+        x: 622
+        y: 1407
+        width: 335
+        height: 376
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,10 +426,10 @@ TextureImporter:
       name: MediumWalk_12
       rect:
         serializedVersion: 2
-        x: 1290
-        y: 1504
+        x: 1217
+        y: 1408
         width: 338
-        height: 375
+        height: 374
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,9 +447,9 @@ TextureImporter:
       name: MediumWalk_13
       rect:
         serializedVersion: 2
-        x: 1887
-        y: 1507
-        width: 339
+        x: 1823
+        y: 1410
+        width: 338
         height: 372
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -468,10 +468,10 @@ TextureImporter:
       name: MediumWalk_14
       rect:
         serializedVersion: 2
-        x: 2487
-        y: 1507
-        width: 339
-        height: 373
+        x: 2414
+        y: 1403
+        width: 338
+        height: 374
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,8 +489,8 @@ TextureImporter:
       name: MediumWalk_15
       rect:
         serializedVersion: 2
-        x: 108
-        y: 944
+        x: 17
+        y: 664
         width: 334
         height: 374
       alignment: 0
@@ -510,8 +510,8 @@ TextureImporter:
       name: MediumWalk_16
       rect:
         serializedVersion: 2
-        x: 702
-        y: 944
+        x: 584
+        y: 664
         width: 326
         height: 375
       alignment: 0
@@ -531,8 +531,8 @@ TextureImporter:
       name: MediumWalk_17
       rect:
         serializedVersion: 2
-        x: 1290
-        y: 944
+        x: 1206
+        y: 663
         width: 315
         height: 375
       alignment: 0
@@ -552,8 +552,8 @@ TextureImporter:
       name: MediumWalk_18
       rect:
         serializedVersion: 2
-        x: 1887
-        y: 944
+        x: 1789
+        y: 664
         width: 304
         height: 377
       alignment: 0
@@ -573,10 +573,10 @@ TextureImporter:
       name: MediumWalk_19
       rect:
         serializedVersion: 2
-        x: 2509
-        y: 946
-        width: 295
-        height: 375
+        x: 2406
+        y: 664
+        width: 296
+        height: 377
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
