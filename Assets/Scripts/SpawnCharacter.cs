@@ -42,7 +42,7 @@ public class SpawnCharacter : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Alpha4))
             checkSpawnEntity(constants.HEAVY_UNIT_TYPE, true);
 
-
+        
         if (Input.GetKeyUp(KeyCode.B))
         {
             checkSpawnEntity(constants.LIGHT_UNIT_TYPE, false);
@@ -50,7 +50,7 @@ public class SpawnCharacter : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.C)) {
             checkSpawnEntity(constants.RANGED_UNIT_TYPE, false);
         }
-        else if (Input.GetKeyUp(KeyCode.D))
+        else if (Input.GetKeyUp(KeyCode.F))
         {
             checkSpawnEntity(constants.MEDIUM_UNIT_TYPE, false);
         }
@@ -58,6 +58,7 @@ public class SpawnCharacter : MonoBehaviour
         {
             checkSpawnEntity(constants.HEAVY_UNIT_TYPE, false);
         }
+        
 
     }
 
@@ -73,12 +74,10 @@ public class SpawnCharacter : MonoBehaviour
         StopAllCoroutines();
         playerEntityQueue.Clear();
         enemyEntityQueue.Clear();
-
-
     }
 
 
-    void checkSpawnEntity(int iEntityType, bool isPlayer)
+    private void checkSpawnEntity(int iEntityType, bool isPlayer)
     {
         int iUnitCount = 0;
         if (isPlayer)
@@ -153,7 +152,7 @@ public class SpawnCharacter : MonoBehaviour
         UnitTypeStats unitTypeStats = upgradesScript.returnUnitStats(isPlayer, iEntityType);
         unitScript.setUnitAttributes(unitTypeStats.getHealth(), unitTypeStats.getMinDamage(), unitTypeStats.getMaxDamage(), unitTypeStats.getDamageDelay(), unitTypeStats.getRange(), unitTypeStats.getSpeed());
         unitScript.setUnit(targetPos, isPlayer,iEntityType,getID(isPlayer));
-        gameManager.addToPlayerArmy(unitScript,isPlayer,entity);
+        gameManager.addToArmy(unitScript,isPlayer,entity);
     }
     IEnumerator PlayerQueueCoroutine()
     {

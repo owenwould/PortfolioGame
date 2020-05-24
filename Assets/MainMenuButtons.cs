@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    // Start is called before the first frame update
- 
+    [SerializeField] UIManager uiManager;
+
+   
 
     public void displayHelpUI()
     {
-
+        uiManager.displayHelpMenuUI();
+    }
+    public void returnToMainMenu()
+    {
+        uiManager.displayMainMenu();
     }
 
     public void quitGame()

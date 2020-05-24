@@ -159,11 +159,13 @@ public class Upgrades : MonoBehaviour
 
     public void enemyUpgrade(int upgradeKey, int attributeType,int unitType,int stage,int cost)
     {
-        //Enemy checks cost in previous function so there will be enough
+        int gold = managerScript.getEnemyGold();
+        if (gold < cost)
+            return;
 
         int initialValue = constants.returnInitialValue(unitType, attributeType);
         int newValue = constants.returnNewValue(initialValue, stage);
-        managerScript.decreaseGold(cost, true);
+        managerScript.decreaseGold(cost, false);
         upgradeUnitStats(enemyUnitStats, attributeType, unitType, newValue, stage);
 
         //Update Upgrade Dictionary

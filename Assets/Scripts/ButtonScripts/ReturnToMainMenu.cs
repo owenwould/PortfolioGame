@@ -7,6 +7,8 @@ public class ReturnToMainMenu : MonoBehaviour
     [SerializeField] UIManager uiManager;
     public void returnToMainMenu()
     {
+        uiManager.disableAudio();
         uiManager.displayMainMenu();
+        uiManager.returnCameraPosToDefault();
     }
 }

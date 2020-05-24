@@ -12,13 +12,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] Base playerBaseScript;
     [SerializeField] Upgrades upgradeScript;
     float spawnXPos;
-    int waitTime = 3;
+    int waitTime =4;
     bool canSpawnAll;
     public bool enemyActive,upgradesComplete;
     List<int> upgradeListOrder;
 
     private void Start()
     {
+    
         canSpawnAll = false;
         spawnXPos = spawnTran.position.x;
         upgradesComplete = false;
@@ -55,7 +56,7 @@ public class EnemyManager : MonoBehaviour
     private bool canBuyUnit(int unitCount,int gold)
     {
       
-        if (unitCount < constants.MAX_UNIT_COUNT && gold >= constants.LIGHT_UNIT_COST)
+        if (unitCount < 4 && gold >= constants.LIGHT_UNIT_COST)
             return true;
         else
             return false;
@@ -78,7 +79,7 @@ public class EnemyManager : MonoBehaviour
                 chooseUnit(gold);
             else
             {
-              makeEducatedDecision(gold);
+              makeEducatedDecision(gold,unitCount);
             }
         }
         else
@@ -87,10 +88,12 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    void makeEducatedDecision(int gold)
+    void makeEducatedDecision(int gold,int unitCount)
     {
         int distanceAdditive = considerDistance();
         int baseAdditive = considerPlayerHealth();
+        int unitCountSubtractive = considerUnitCount(unitCount);
+        distanceAdditive -= unitCountSubtractive;
         finalDecision(baseAdditive, distanceAdditive, gold);
     }
 
@@ -105,39 +108,51 @@ public class EnemyManager : MonoBehaviour
         int action = 0;
         if (isAttacking)
         {
-            if (distance > 0 && distance < 20)
+            if (distance > 0 && distance < 21)
                 action = 40;
-            else if (distance > 20 && distance < 40)
+            else if (distance > 20 && distance < 41)
                 action = 30;
-            else if (distance > 40 && distance < 60)
+            else if (distance > 40 && distance < 61)
                 action = 20;
             else if (distance > 60)
                 action = 30;
             else
             {
+                print(distance);
                 print("Errir");
             }
         }
         else
         {
-            if (distance > 0 && distance < 20)
+            if (distance > 0 && distance < 21)
                 action = 10;
-            else if (distance > 20 && distance < 40)
+            else if (distance > 20 && distance < 41)
                 action = 20;
-            else if (distance > 40 && distance < 60)
+            else if (distance > 40 && distance < 61)
                 action = 20;
             else if (distance > 60)
                 action = 40;
             else
             {
-                print("Errir");
+                print(distance);
+                print("Error");
             }
         }
         
-        //print(action + "d " + distance);
+      
         return action;
     }
 
+    private int considerUnitCount(int unitCount)
+    {
+        if (unitCount > 3 && unitCount < 5)
+            return 0;
+        else if (unitCount > 4 && unitCount < 6)
+            return 5;
+        else
+            return 10;
+    }
+    
 
     private int considerPlayerHealth()
     {
@@ -152,37 +167,37 @@ public class EnemyManager : MonoBehaviour
         else if (playerHealthPercentage > 50 && playerHealthPercentage < 81)
             action = 20;
         else if (playerHealthPercentage > 80 && playerHealthPercentage < 101)
-           action =30;
+           action = 30;
         else
         {
             print(playerHealthPercentage);
             print("Error");
         }
 
-       // print(action + "h " + playerHealthPercentage);
+      
        
         return action;
     }
     private void finalDecision(int healthAspect, int distanceAspect, int gold)
     {
-
+      
         int action = healthAspect + distanceAspect;
 
-
-        if (action > 0 && action < 51)
+        //print(action);
+        if (action > 0 && action < 46)
         {
             print("up");
+
+            if (gold < 500)
+                return;
             upgradeAction(gold);
             return;
         }
-        else if (action > 50 && action < 101)
+        else if (action > 45 && action < 101)
         {
             print("Spawn");
             chooseUnit(gold);
         }
-
-
-
     }
 
 
@@ -207,7 +222,7 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator timeCanSpawnAllUnits()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(10);
         canSpawnAll = true;
     }
 
@@ -235,12 +250,6 @@ public class EnemyManager : MonoBehaviour
 
         return decideUnit(max);
     }
-
-
-
-
-
-
 
     int decideUnit(int max)
     {
@@ -316,9 +325,6 @@ public class EnemyManager : MonoBehaviour
         return playerBaseScript.getHealth();
     }
 
-
-
-
     private void upgradeAction(int gold)
     {
         decideUpgrade(gold);
@@ -372,9 +378,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-   
-
-
+  
     private void setUpgradeList()
     {
        
@@ -389,12 +393,6 @@ public class EnemyManager : MonoBehaviour
         //Randomise order each game
         upgradeListOrder.Shuffle();
     }
-
-
-   
-
-
-
 }
 
 public static class IListExtensions

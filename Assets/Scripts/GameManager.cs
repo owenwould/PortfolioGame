@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnemyManager enemyManager;
     [SerializeField] Upgrades upgradeScript;
     [SerializeField] MusicManager musicManager;
+    [SerializeField] StatsTracker statsTracker;
+    [SerializeField] Timer timer;
     
-    private int playerGold, enemyGold,unitCountPlayer,unitCountEnemy;
+    public int playerGold, enemyGold,unitCountPlayer,unitCountEnemy;
     public static bool gameover = false,mainMenuMode = true;
 
     void Start()
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     private void setInitialValues()
     {
         playerGold = constants.startGold;
-        enemyGold = constants.startGold;
+        enemyGold = constants.enemyStartGold;
         unitCountPlayer = 0;
         unitCountEnemy = 0;
     }
@@ -46,6 +48,8 @@ public class GameManager : MonoBehaviour
         enemyBase.startGame();
         enemyManager.begin();
         startMusic();
+        statsTracker.beginGame();
+        timer.startTimer();
 
     } 
     private void clearArmies()
@@ -69,12 +73,13 @@ public class GameManager : MonoBehaviour
 
   
 
-    public void addToPlayerArmy(Unit unit, bool isPlayer,GameObject obj)
+    public void addToArmy(Unit unit, bool isPlayer,GameObject obj)
     {
         if (isPlayer)
         {
             playerArmy.Add(unit);
             playerArmyObj.Add(obj);
+            statsTracker.increaseSpawnCount();
         }
         else
         {
@@ -118,8 +123,8 @@ public class GameManager : MonoBehaviour
             enemyArmy.RemoveAt(0);
             enemyArmyObj.RemoveAt(0);
             int reward = enemyDeathReward(iEntityType);
-           
             increaseGold(reward,true);
+            statsTracker.increaseKillCount();
         }
             
     }
@@ -203,7 +208,7 @@ public class GameManager : MonoBehaviour
         if (isPlayer)
         {
             playerGold += value;
-            updateGoldCountUI(playerGold);
+            updateGoldCountUI();
         }
         else
         {
@@ -216,7 +221,8 @@ public class GameManager : MonoBehaviour
         if (isPlayer)
         {
             playerGold -= value;
-            updateGoldCountUI(playerGold);
+            updateGoldCountUI();
+            statsTracker.increaseGoldSpendure(value);
         }
         else
         {
@@ -229,9 +235,9 @@ public class GameManager : MonoBehaviour
     {
         uiManager.setUnitCount(size);
     }
-    private void updateGoldCountUI(int goldValue)
+    private void updateGoldCountUI()
     {
-        uiManager.setGoldValue(goldValue);
+        uiManager.setGoldValue(playerGold);
     }
 
     private int enemyDeathReward(int iType)
@@ -271,6 +277,7 @@ public class GameManager : MonoBehaviour
 
     private void gameoverState(bool isPlayer)
     {
+        timer.stopTimer();
         enemyManager.StopAllCoroutines();
 
         foreach (Unit unit in enemyArmy)
@@ -285,7 +292,10 @@ public class GameManager : MonoBehaviour
         
         goldGenerator.stopGoldGen();
         gameover = true;
-        uiManager.gameover(isPlayer);
+
+
+        float seconds = timer.getSeconds();
+        uiManager.gameover(isPlayer,systemFunctions.getTimerString(seconds));
 
     }
 
@@ -363,7 +373,7 @@ public class GameManager : MonoBehaviour
             return true;
         float pos1 = unitList[indexOne].getXPosition();
         float pos2 = unitList[indexTwo].getXPosition();
-        canMove = distance.isntTooClose(pos1, pos2);
+        canMove = systemFunctions.isntTooClose(pos1, pos2);
         return canMove;
 
     }

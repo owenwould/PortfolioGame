@@ -5,6 +5,7 @@ using UnityEngine;
 public class StartGame : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
+   
     
     public void startGame()
     {

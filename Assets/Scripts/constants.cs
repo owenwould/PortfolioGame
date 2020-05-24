@@ -17,10 +17,16 @@ public class constants : MonoBehaviour
     public const string isRunning = "isRunning", isAttacking = "isAttacking";
 
     public const int LIGHT_RANDOM_MAX = 100, RANGED_RANDOM_MAX = 200, MEDIUM_RANDOM_MAX = 300, HEAVY_RANDOM_MAX = 400;
-    public const int BASE_HEALTH = 10000;
+    public const int BASE_HEALTH = 800;
 
 
-    public const int startGold = 3000;
+    //Gameover text 
+    public const string goldSpentText = "Amount of gold spent:",enemiesKilledText = "Number enemies killed:",friendlySpawnText = "Number of friendly units spawned:",timeTakenText = "Game Time: ";
+    public const string secondsText = "seconds";
+
+
+    public const int startGold = 3000,enemyStartGold = 4500;
+
 
     public const int firstUpgradeCost = 300, secondUpgradeCost = 500, finalUpgradeCost = 1000;
 
@@ -34,30 +40,26 @@ public class constants : MonoBehaviour
     public const int firendlyDetectionRange = 2;
 
     //Unit stats - light
-    public const int LIGHT_HEALTH = 210,  LIGHT_MIN_DAMAGE = 20, LIGHT_MAX_DAMAGE = 35,LIGHT_SPEED = 5, LIGHT_RANGE = 1;
+    public const int LIGHT_HEALTH = 200,  LIGHT_MIN_DAMAGE = 20, LIGHT_MAX_DAMAGE = 35,LIGHT_SPEED = 6, LIGHT_RANGE = 1;
     public const float LIGHT_DAMAGE_DELAY = 1.0f;
 
     //Unit stats - medium 
-    public const int MEDIUM_HEALTH = 300, MEDIUM_MIN_DAMAGE = 35, MEDIUM_MAX_DAMAGE = 40, MEDIUM_SPEED = 3, MEDIUM_RANGE = 1;
-    public const float MEDIUM_DAMAGE_DELAY = 0.9f;
+    public const int MEDIUM_HEALTH = 300, MEDIUM_MIN_DAMAGE = 35, MEDIUM_MAX_DAMAGE = 40, MEDIUM_SPEED = 4, MEDIUM_RANGE = 1;
+    public const float MEDIUM_DAMAGE_DELAY = 1.2f;
 
     //Unit Stats - Ranged
-    public const int RANGED_HEALTH = 140, RANGED_MIN_DAMAGE = 15, RANGED_MAX_DAMAGE = 30, RANGED_SPEED = 4, RANGED_RANGE = 5;
+    public const int RANGED_HEALTH = 150, RANGED_MIN_DAMAGE = 15, RANGED_MAX_DAMAGE = 30, RANGED_SPEED = 5, RANGED_RANGE = 5;
     public const float RANGED_DAMAGE_DELAY = 1.3f; 
 
     //Unit Stats - Heavy
-    public const int HEAVY_HEALTH = 400, HEAVY_MIN_DAMAGE = 40, HEAVY_MAX_DAMAGE = 50, HEAVY_SPEED = 2, HEAVY_RANGE = 1;
-    public const float HEAVY_DAMAGE_DELAY = 1.6f;
+    public const int HEAVY_HEALTH = 400, HEAVY_MIN_DAMAGE = 40, HEAVY_MAX_DAMAGE = 50, HEAVY_SPEED = 3, HEAVY_RANGE = 1;
+    public const float HEAVY_DAMAGE_DELAY = 1.5f;
 
 
     public const string HEALTH_UPGRADE_TEXT = "Upgrade Health", DAMAGE_UPGRADE_TEXT = "Upgrade Damage", SPEED_UPGRADE_TEXT = "Upgrade Speed", RANGE_UPGRADE_TEXT = "Upgrade Range",UPGRADE_COMPLETE = "Complete";
     //Upgrades 
 
     public const int lightHealthKey = 12, lightDamageKey = 13, mediumSpeedKey = 14, mediumDamageKey = 15,rangeRangeKey =16,rangeDamageKey=17,heavyHealthKey = 18,heavyDamageKey=19;
-
-  
-    
-
 
     private static int getStageValue(int initialValue, float modifier)
     {
@@ -66,10 +68,6 @@ public class constants : MonoBehaviour
         return convertedVal + initialValue;
 
     }
-
-
-   
-
     public static int returnNewValue(int originalValue, int stage)
     {
         switch(stage)
@@ -118,7 +116,7 @@ public class constants : MonoBehaviour
                 break;
         }
        
-        return 1000;
+        return 0;
     }
 
     public static int returnInitialMaxDamage(int unitType)
@@ -135,7 +133,7 @@ public class constants : MonoBehaviour
                 return HEAVY_MAX_DAMAGE;
         }
         print("Error");
-        return 1000;
+        return 0;
 
     }
     public static string returnUpgradeText(int attributeType)

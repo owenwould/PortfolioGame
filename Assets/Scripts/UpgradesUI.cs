@@ -109,8 +109,6 @@ public class UpgradesUI : MonoBehaviour
             heavyUpgradeButtons.SetActive(false);
             heavyButtonImage.color = blue;
         }
-          
-
     }
 
     private void displayButtons(GameObject buttons, int unitType)
@@ -136,15 +134,12 @@ public class UpgradesUI : MonoBehaviour
     public void setCurrentProgress(int unitType,int attributeType,bool isTop,GameObject ButtonObj,TextMeshProUGUI buttonText)
     {
 
-
         int upgradeKey = constants.getUpgradeKey(unitType, attributeType);
         int currentStage = upgradeScript.returnCurrentProgress(upgradeKey);
         string upgradeName;
         int progress;
 
-
         setButtonText(buttonText, currentStage);
-
 
         if (currentStage == constants.stage_final)
         {
@@ -173,8 +168,6 @@ public class UpgradesUI : MonoBehaviour
         }
             
     }
-
-
     private void setButtonText(TextMeshProUGUI buttonText,int currentStage)
     {
         if (currentStage == constants.stage_final)

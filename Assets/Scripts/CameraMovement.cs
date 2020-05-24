@@ -10,12 +10,10 @@ public class CameraMovement : MonoBehaviour
     Vector3 cameraVec;
     Vector3 resetVec;
     float force = 1f;
-
-
-
-
+    float defaultZ, defaultY;
+    Vector3 destination;
+    bool camMove;
    
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -24,12 +22,27 @@ public class CameraMovement : MonoBehaviour
         fRightBoundary = rightCameraBoundaryTran.position.x;
         cameraVec = new Vector3(cameraTran.position.x, 0, 0);
         resetVec = new Vector3(0, cameraTran.position.y, cameraTran.position.z);
-        
+        destination = new Vector3(0, 0, 0);
+        camMove = false;
+
+        defaultY = cameraTran.position.y;
+        defaultZ = cameraTran.position.z;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (camMove)
+        {
+            float step = 12f * Time.deltaTime;
+            cameraTran.position = Vector3.MoveTowards(cameraTran.position, destination, step);
+           
+            if (Vector3.Distance(cameraTran.position, destination) < 0.1f)
+                camMove = false;
+           
+        }
+
 
         if (GameManager.mainMenuMode || GameManager.gameover)
             return;
@@ -59,8 +72,11 @@ public class CameraMovement : MonoBehaviour
 
     }
 
-    public void gameOver()
-    {
-
-    }
+   public void setCameraPos(Vector3 position)
+   {
+        camMove = true;
+        destination = position;
+        destination.y = defaultY;
+        destination.z = defaultZ;
+   }
 }
