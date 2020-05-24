@@ -5,7 +5,8 @@ using UnityEngine;
 public class GoldGenerator : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
-    const int GOLD_VALUE = 2;
+    const int GOLD_VALUE = 5;
+ 
     void Start()
     {
         

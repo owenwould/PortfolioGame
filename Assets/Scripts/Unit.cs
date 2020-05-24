@@ -200,7 +200,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    void setType(bool isPlayer)
+    private void setType(bool isPlayer)
     {
      
         if (isPlayer)
@@ -209,12 +209,14 @@ public class Unit : MonoBehaviour
             enemyMask = LayerMask.GetMask(constants.enemyMaskName);
             gameObject.layer = LayerMask.NameToLayer(constants.playerMaskName);
             transform.localEulerAngles = new Vector3(0, -180, 0);
+           
         }
         else 
         {
             friendlyMask = LayerMask.GetMask(constants.enemyMaskName);
             enemyMask = LayerMask.GetMask(constants.playerMaskName);
             gameObject.layer = LayerMask.NameToLayer(constants.enemyMaskName);
+            
 
         }
     }
@@ -312,6 +314,15 @@ public class Unit : MonoBehaviour
     {
         return unitID;
     }
+
+    public void updateRange()
+    {
+        //Coupled with the spawn point this makes sure if there is a unit spawned the base wont be getting damaged
+        if (!(entityType == constants.RANGED_UNIT_TYPE))
+            range = 3;
+        canMove = false;
+    }
+
 
     private void setHealthBar()
     {

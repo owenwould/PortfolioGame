@@ -42,7 +42,7 @@ public class SpawnCharacter : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Alpha4))
             checkSpawnEntity(constants.HEAVY_UNIT_TYPE, true);
 
-        
+        /*
         if (Input.GetKeyUp(KeyCode.B))
         {
             checkSpawnEntity(constants.LIGHT_UNIT_TYPE, false);
@@ -58,6 +58,7 @@ public class SpawnCharacter : MonoBehaviour
         {
             checkSpawnEntity(constants.HEAVY_UNIT_TYPE, false);
         }
+        */
         
 
     }

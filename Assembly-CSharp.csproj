@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\UnitAttributes.cs" />
     <Compile Include="Assets\Scripts\UnitTypeStats.cs" />
     <Compile Include="Assets\Scripts\UpgradeButton.cs" />
+    <Compile Include="Assets\Scripts\UpgradeRange.cs" />
     <Compile Include="Assets\Scripts\UpgradeStatButton.cs" />
     <Compile Include="Assets\Scripts\Upgrades.cs" />
     <Compile Include="Assets\Scripts\UpgradesUI.cs" />

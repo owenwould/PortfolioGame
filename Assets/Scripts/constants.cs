@@ -5,7 +5,7 @@ using UnityEngine;
 public class constants : MonoBehaviour
 {
     public const string enemyMaskName = "EnemyArmyLayer", playerMaskName = "PlayerArmyLayer";
-    public const string enemyTag = "Enemy", playerTag = "Player", baseTag = "Base";
+    public const string enemyTag = "Enemy", playerTag = "Player", baseTag = "Base",unassignedTag = "Entity";
     public const string lightTag = "Light", rangeTag = "Range", mediumTag = "Medium", heavyTag = "Heavy";
     public const string healthBarTag = "HealthBar";
 
@@ -25,10 +25,10 @@ public class constants : MonoBehaviour
     public const string secondsText = "seconds";
 
 
-    public const int startGold = 3000,enemyStartGold = 4500;
+    public const int startGold = 3000,enemyStartGold = 4000;
 
 
-    public const int firstUpgradeCost = 300, secondUpgradeCost = 500, finalUpgradeCost = 1000;
+    public const int firstUpgradeCost = 200, secondUpgradeCost = 400, finalUpgradeCost = 600;
 
 
     public const int attribute_tpye_health = 20, attribute_type_damage = 21, attribute_type_range = 22, attribute_type_speed = 23;
@@ -44,7 +44,7 @@ public class constants : MonoBehaviour
     public const float LIGHT_DAMAGE_DELAY = 1.0f;
 
     //Unit stats - medium 
-    public const int MEDIUM_HEALTH = 300, MEDIUM_MIN_DAMAGE = 35, MEDIUM_MAX_DAMAGE = 40, MEDIUM_SPEED = 4, MEDIUM_RANGE = 1;
+    public const int MEDIUM_HEALTH = 300, MEDIUM_MIN_DAMAGE = 35, MEDIUM_MAX_DAMAGE = 40, MEDIUM_SPEED = 3, MEDIUM_RANGE = 1;
     public const float MEDIUM_DAMAGE_DELAY = 1.2f;
 
     //Unit Stats - Ranged

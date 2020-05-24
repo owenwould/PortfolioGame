@@ -16,10 +16,11 @@ public class EnemyManager : MonoBehaviour
     bool canSpawnAll;
     public bool enemyActive,upgradesComplete;
     List<int> upgradeListOrder;
+    bool upgrade;
 
     private void Start()
     {
-    
+        upgrade = false;
         canSpawnAll = false;
         spawnXPos = spawnTran.position.x;
         upgradesComplete = false;
@@ -186,10 +187,15 @@ public class EnemyManager : MonoBehaviour
         //print(action);
         if (action > 0 && action < 46)
         {
-            print("up");
-
             if (gold < 500)
                 return;
+           
+            if (upgrade)
+            {
+                upgrade = false;
+                return;
+            }
+            print("up");
             upgradeAction(gold);
             return;
         }
@@ -256,24 +262,34 @@ public class EnemyManager : MonoBehaviour
         int random = Random.Range(0, max);
         int unitType = 1;
 
-        if (random >= 0 && random < constants.LIGHT_RANDOM_MAX) 
+        if (random >= 0 && random < constants.LIGHT_RANDOM_MAX)
         {
             unitType = constants.LIGHT_UNIT_TYPE;
         }
-        else if (random >= constants.LIGHT_RANDOM_MAX && random < constants.RANGED_RANDOM_MAX) 
+        else if (random >= constants.LIGHT_RANDOM_MAX && random < constants.RANGED_RANDOM_MAX)
         {
-            unitType = constants.RANGED_UNIT_TYPE;
+            if ((random >= constants.LIGHT_RANDOM_MAX && random < constants.LIGHT_RANDOM_MAX + 25))
+                unitType = constants.LIGHT_UNIT_TYPE;
+            else
+                unitType = constants.RANGED_UNIT_TYPE;
         }
-        else if (random >= constants.RANGED_RANDOM_MAX && random < constants.MEDIUM_RANDOM_MAX)
+        else if (random >= constants.RANGED_RANDOM_MAX  && random < constants.MEDIUM_RANDOM_MAX)
         {
-            unitType = constants.MEDIUM_UNIT_TYPE;
+            if ((random >= constants.RANGED_RANDOM_MAX && random < constants.RANGED_RANDOM_MAX + 25))
+                unitType = constants.RANGED_UNIT_TYPE;
+            else
+                unitType = constants.MEDIUM_UNIT_TYPE;
         }
         else if (random >= constants.MEDIUM_RANDOM_MAX && random < constants.HEAVY_RANDOM_MAX)
         {
-            unitType = constants.HEAVY_UNIT_TYPE;
+            if ((random >= constants.MEDIUM_RANDOM_MAX && random < constants.MEDIUM_RANDOM_MAX + 25))
+                unitType = constants.MEDIUM_UNIT_TYPE;
+            else
+
+                unitType = constants.HEAVY_UNIT_TYPE;
         }
-       
-     
+
+
         return unitType;
     }
 
@@ -337,19 +353,33 @@ public class EnemyManager : MonoBehaviour
             return;
 
         if (upgradeStage(constants.initialStage, constants.firstUpgradeCost))
+        {
+            StartCoroutine(upgradeDelay());
+            upgrade = true;
             return;
+        }
+          
       
         if (gold < constants.secondUpgradeCost)
             return;
 
         if (upgradeStage(constants.stage_one, constants.secondUpgradeCost))
+        {
+            StartCoroutine(upgradeDelay());
+            upgrade = true;
             return;
+        }
+            
 
         if (gold < constants.finalUpgradeCost)
             return;
 
         if (upgradeStage(constants.stage_two, constants.finalUpgradeCost))
+        {
+            StartCoroutine(upgradeDelay());
+            upgrade = true;
             return;
+        }
         else
             upgradesComplete = true;
    }
@@ -392,6 +422,14 @@ public class EnemyManager : MonoBehaviour
         upgradeListOrder.Add(constants.heavyDamageKey);
         //Randomise order each game
         upgradeListOrder.Shuffle();
+    }
+
+
+
+    private IEnumerator upgradeDelay()
+    {
+        yield return new WaitForSeconds(6);
+        upgrade = false;
     }
 }
 
