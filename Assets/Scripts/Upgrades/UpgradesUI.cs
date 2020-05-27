@@ -33,6 +33,8 @@ public class UpgradesUI : MonoBehaviour
     }
 
 
+
+
     public void changeUpgradeCanvasState()
     {
         if (GameManager.gameover || GameManager.mainMenuMode)
@@ -139,6 +141,9 @@ public class UpgradesUI : MonoBehaviour
         string upgradeName;
         int progress;
 
+
+
+
         setButtonText(buttonText, currentStage);
 
         if (currentStage == constants.stage_final)
@@ -152,6 +157,9 @@ public class UpgradesUI : MonoBehaviour
         }
         else
         {
+            if (!ButtonObj.activeSelf)
+                ButtonObj.SetActive(true);
+
             upgradeName = constants.returnUpgradeText(attributeType);
             progress = currentStage * 33;
         }

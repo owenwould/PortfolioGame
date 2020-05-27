@@ -28,7 +28,7 @@ public class constants : MonoBehaviour
     public const int startGold = 3000,enemyStartGold = 4500;
 
 
-    public const int firstUpgradeCost = 200, secondUpgradeCost = 400, finalUpgradeCost = 800;
+    public const int firstUpgradeCost = 300, secondUpgradeCost = 600, finalUpgradeCost = 1200;
 
 
     public const int attribute_tpye_health = 20, attribute_type_damage = 21, attribute_type_range = 22, attribute_type_speed = 23;

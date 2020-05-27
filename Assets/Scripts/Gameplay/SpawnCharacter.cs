@@ -40,6 +40,10 @@ public class SpawnCharacter : MonoBehaviour
             checkSpawnEntity(constants.MEDIUM_UNIT_TYPE, true);
         else if (Input.GetKeyUp(KeyCode.Alpha4))
             checkSpawnEntity(constants.HEAVY_UNIT_TYPE, true);
+
+
+
+
     }
 
     public void spawnUnit(int unitType,bool isPlayer)
